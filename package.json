@@ -1,6 +1,7 @@
 {
-  "name": "design",
+  "name": "wakeflow-design",
   "version": "0.1.0",
+  "description": "wakeflow's component library",
   "main": "index.js",
   "type": "module",
   "keywords": [
