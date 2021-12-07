@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Button = () => {
+const Button = ({ text = `5.12+` }) => {
   return (
     <Container>
-      <button>5.12+</button>
+      <button>{text}</button>
     </Container>
   )
 }

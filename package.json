@@ -1,6 +1,6 @@
 {
   "name": "wakeflow-design",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "wakeflow's component library",
   "main": "index.js",
   "type": "module",
@@ -52,6 +52,7 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.16.0",
     "eslint": "^7.32.0",
     "mocha": "^9.1.3"
   }

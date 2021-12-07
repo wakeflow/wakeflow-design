@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Badge = () => {
+const Badge = ({ text = `5.12+` }) => {
   return (
     <Container>
-      <Text>5.12+</Text>
+      <Text>{text}</Text>
     </Container>
   )
 }
