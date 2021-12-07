@@ -1,4 +1,4 @@
-import { Badge,Button } from "./components/index.js";
+import { Badge,Button } from "./components/index.js"
 
 function App() {
   return (
@@ -6,7 +6,7 @@ function App() {
       <Badge/>
       <Button/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
