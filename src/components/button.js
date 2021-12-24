@@ -2,7 +2,7 @@ import React,{ useEffect,useState } from 'react'
 import styled from 'styled-components'
 import { useRef } from 'react'
 
-const Button = ({ text,onClick,style,disabled,...rest }) => {
+const Button = ({ text,onClick,style,disabled,keyPress,...rest }) => {
   const ref = useRef()
   const [coords,setCoords] = useState({ x: -1,y: -1 })
   const [isRippling,setIsRippling] = useState(false)
@@ -26,7 +26,20 @@ const Button = ({ text,onClick,style,disabled,...rest }) => {
   useEffect(() => {
     if(ref) ref.current.addEventListener(`click`,materializeEffect)
   },[])
- 
+  
+  const handleKeyUp = e => {
+    if(e.key === keyPress) {
+      e.target.blur()
+      ref.current.click()
+    }
+  }
+  useEffect(() => {
+    if(keyPress) document.addEventListener(`keydown`,handleKeyUp,false)
+    return () => {
+      if(keyPress) document.removeEventListener(`keydown`,handleKeyUp,false)
+    }
+  },[])
+
   return (
     <Container
       ref={ref}

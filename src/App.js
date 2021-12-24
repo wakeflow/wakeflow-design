@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
       {/* <Badge/> */}
-      <Button text="test" onClick={() => console.log(`Clicked`)}/>
+      <Button keyPress="Enter" text="test" onClick={() => console.log(`Clicked`)}/>
     </div>
   )
 }
