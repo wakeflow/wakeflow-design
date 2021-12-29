@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+## Intro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Contains all of Wakeflow's design components
 
-## Available Scripts
+Allowing for ease of use across all company assets
 
-In the project directory, you can run:
+Built using styled components and react
 
-### `yarn start`
+## How it works
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To use Wakeflow design button:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Install wakeflow-design `npm i wakeflow-design`
+2. Inside the component you wish to use import the desired component `import { Button } from 'wakeflow-design'`
+3. Use the component like a regular component passing in any desired values `<Button text="Click Me" />`
 
-### `yarn test`
+## Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. `npm i wakeflow-access`
+2. Refer to the repo for available params
 
-### `yarn build`
+## Information Security
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- We are ICO registered ([see ICO website](https://ico.org.uk/ESDWebPages/Entry/ZB265871))
+- We are working on an ISO27001 accreditation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
+![Wakeflow Logo](https://wakeflow.io/wakeflowlogo.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+👨‍💻 Visit us on [www.wakeflow.io](https://wakeflow.io)
 
-### `yarn eject`
+💬 Chat with us on [WhatsApp](https://wakeflow.io/logos/whatsapp.png) or our [live chat](https://wakeflow.io)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+✉️ [Email us](mailto:contact@wakeflow.io)
