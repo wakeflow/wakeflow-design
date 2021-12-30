@@ -1,6 +1,6 @@
 {
   "name": "wakeflow-design",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "wakeflow's component library",
   "main": "dist/index.js",
   "type": "module",
@@ -46,6 +46,8 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-react": "^7.16.0",
+    "@iconify/react": "^3.1.1",
+    "google-map-react": "^2.1.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
