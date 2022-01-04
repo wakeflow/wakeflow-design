@@ -11,7 +11,7 @@ const ContactCard = ({ image,color = { primaryColor: ``,secondaryColor: ``,textC
         <Image src={image} borderColor={color.secondaryColor}/>
         <BiographyCard name={bio.name} additionalDetails={bio.additionalDetails} links={bio.links} color={color}/>
       </FirstRow>
-      <EmailPhoneCard email={bio.email} phone={bio.phone}/>
+      <EmailPhoneCard email={bio.email} phone={bio.phone} color={color} />
     </Container>
   )
 }

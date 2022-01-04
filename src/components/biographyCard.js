@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const BiographyCard = ({ name,additionalDetails,links,color }) => {
   
   return (
-    <Container>
+    <Container textColor={color.textColor}>
       <Name>{name}</Name>
       <AdditionalDetails>{additionalDetails}</AdditionalDetails>
       <Links>
@@ -22,6 +22,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  color: ${p => p.textColor ? p.textColor : `black`};
 `
 const Name = styled.div`
   font-size: 1.8rem;

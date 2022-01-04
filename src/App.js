@@ -18,7 +18,7 @@ function App() {
       {/* <DownloadButton/> */}
       {/* <Loader/> */}
       {/* <Map pin={ { color: `blue`,lat: `51.525261`,lng: `-0.167490` } } apiKey='' /> */}
-      <ContactCard image="/JoshProfilePhoto_1.jpg" color={{ secondaryColor: `${lightPurple}`,textColor: `black` }} bio={pseudoBio}/>
+      <ContactCard image="/JoshProfilePhoto_1.jpg" color={{ primaryColor: ``,secondaryColor: `${lightPurple}`,textColor: `black` }} bio={pseudoBio}/>
     </Container>
   )
 }
