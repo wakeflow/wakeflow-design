@@ -5,3 +5,4 @@ export const purple = `rgb(102,40,173)`
 export const lightPink = `rgb(227,119,195)`
 export const pink = `rgb(236,84,121)`
 export const salmon = `rgb(255,135,118)`
+export const transparentBlack1 = `rgba(28, 28, 28, 0.1)`

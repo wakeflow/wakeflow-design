@@ -1,15 +1,28 @@
 import React from 'react'
 import styled from 'styled-components'
+import colorConvertor,{ addTransparencyToRgba } from '../utils/colourConvertor'
 import {
-  blue,lightBlue,lightPink,lightPurple,pink,purple,salmon, 
+  blue,lightBlue,lightPink,lightPurple,pink,purple,salmon,transparentBlack1, 
 } from '../utils/colours'
 
-const Loader = () => {
+const Loader = ({ image,color }) => {
+  const colorArray = []
+  if(color)
+    for(let i = 0;i < 7;i++)
+      colorArray.push(addTransparencyToRgba(colorConvertor(color),`.${i + 3}`))
   return (
     <Container>
-      <Img src='/wakeflowlogo.png' />
+      <Img src={image} />
       <LoaderContainer>
-        <LoadingBar />
+        <LoadingBar 
+          color1={colorArray[0]} 
+          color2={colorArray[1]} 
+          color3={colorArray[2]} 
+          color4={colorArray[3]} 
+          color5={colorArray[4]} 
+          color6={colorArray[5]} 
+          color7={colorArray[6]} 
+        />
       </LoaderContainer>
     </Container>
   )
@@ -24,16 +37,19 @@ const Container = styled.div`
   align-items: center;
 `
 const Img = styled.img`
-  width: 500px;
+  max-width: 500px;
+  max-height: 200px;
+  padding: 10px;
   @media only screen and (max-width: 600px){
     width: 325px; 
   }
 `
 const LoaderContainer = styled.div`
-  width:500px; 
+  width: 100%; 
   margin: 0 auto;
   border-radius: 10px;
-  border: 4px solid transparent;
+  border: 1px solid transparent;
+  background: ${transparentBlack1};
   position: relative;
   padding: 4px;
   @media only screen and (max-width: 600px){
@@ -57,7 +73,7 @@ const LoadingBar = styled.div`
   right:100%;
   bottom:0;
   left:0;
-  background: ${lightBlue}; 
+  background: ${p => p.color1 ? p.color1 : lightBlue}; 
   width:0;
   animation:borealisBar 4s linear infinite;
   @keyframes borealisBar {
@@ -65,7 +81,7 @@ const LoadingBar = styled.div`
     left:0%;
     right:100%;
     width:0%;
-    background: ${lightBlue};
+    background: ${p => p.color1 ? p.color1 : lightBlue};
   }
   10% {
     left:0%;
@@ -74,31 +90,31 @@ const LoadingBar = styled.div`
     
   }
   16%{
-    background: ${blue};
+    background: ${p => p.color2 ? p.color2 : blue};
   }
   32%{
-    background: ${lightPurple};
+    background: ${p => p.color3 ? p.color3 : lightPurple};
   }
   48%{
-    background: ${purple};
+    background: ${p => p.color4 ? p.color4 : purple};
   }
   62%{
-    background: ${lightPink};
+    background: ${p => p.color5 ? p.color5 : lightPink};
   }
   78%{
-    background: ${pink};
+    background: ${p => p.color6 ? p.color6 : pink};
   }
   90% {
     right:0%;
     left:75%;
     width:25%;
-    background: ${salmon};
+    background: ${p => p.color7 ? p.color7 : salmon};
   }
   100% {
     left:100%;
     right:0%;
     width:0%;
-    background: ${salmon};
+    background: ${p => p.color7 ? p.color7 : salmon};
   }
 }
 `
