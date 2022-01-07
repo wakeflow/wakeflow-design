@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { GitHub,Linkedin } from "react-feather"
 import styled from "styled-components"
-import { Badge,Button,DownloadButton,Loader,Map,ContactCard } from "./components/index.js"
+import {
+  Badge,Button,DownloadButton,Loader,Map,ContactCard,Input, 
+} from "./components/index.js"
 import { lightBlue,lightPink,lightPurple } from "./utils/colours.js"
 
 //TODO Two Loader Color bug
@@ -50,8 +53,11 @@ function App() {
         // disabled
         onClick={() => console.log(`Clicked`)}/> */}
       {/* <DownloadButton/> */}
-      <Loader image={imageUrl}/>
-      <Loader image={imageUrl} color='black' />
+      <Container2>
+        <Loader image={imageUrl}/>
+        <Loader image={imageUrl} color='black' />
+      </Container2>
+      
       {/* <Map pin={ { color: `blue`,lat: `51.525261`,lng: `-0.167490` } } apiKey='' /> */}
       {/* <ContactCard image="/JoshProfilePhoto_1.jpg" color={{ primaryColor: `rgb(158, 83, 213)`,secondaryColor: `rgb(51, 213, 187)`,textColor: `white` }} bio={pseudoBio}/>
       <ContactCard image="/JoshProfilePhoto_1.jpg" color={{ primaryColor: `red`,secondaryColor: `blue`,textColor: `yellow` }} bio={pseudoBio}/>
@@ -77,4 +83,7 @@ const Container = styled.div`
   display:flex;
   flex-direction:column;
   gap:10px;
+`
+const Container2 = styled.div`
+  width: 500px;
 `
