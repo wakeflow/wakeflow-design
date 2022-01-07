@@ -1,6 +1,7 @@
 import React,{ useState,useEffect,useRef } from 'react'
 import styled from 'styled-components'
 import { validate } from '../utils/validate'
+import { X,Copy } from 'react-feather'
 
 const Input = ({ 
   type,
@@ -16,13 +17,16 @@ const Input = ({
   onBlur,
   onError,
   onEnter,
+  copyable,
+  deletable,
+  style,
 }) => {
 
   const ref = useRef()
   const [currentValue,setCurrentValue] = useState(value || ``)
   const [visited,setVisited] = useState(false)
   useEffect(() => setCurrentValue(value || ``),[value])
-  if(schema && visited && currentValue) error = validate(currentValue,schema).join(`,`)
+  if(schema && visited && currentValue) error = validate(currentValue,schema).join(`, `)
   error = (required && visited && !currentValue) ? `This value is required` : error
 
   const handleChange = e => { 
@@ -64,8 +68,11 @@ const Input = ({
           onChange={handleChange}
           onBlur={handleBlur}
           onKeyUp={handleKeyUp}
+          style={style}
         />
         {postfix && <Postfix value={currentValue}>{postfix}</Postfix>}
+        {copyable && currentValue && <StyledCopy onClick={() => navigator.clipboard.writeText(currentValue)}/>}
+        {deletable && currentValue && <StyledX onClick={() => setCurrentValue(``)}/>}
       </Inline>
       {error && <Error className='input-error' >{error}</Error>}
     </Container>
@@ -125,3 +132,15 @@ const Prefix = styled.div`
   opacity:${p => p.value ? `1` : `0`};
 `
 const Postfix = styled(Prefix)``
+
+const StyledCopy = styled(Copy)`
+  cursor:pointer;
+  height:18px;
+  width:18px;
+  margin-right:10px;
+`
+const StyledX = styled(X)`
+  cursor:pointer;
+  height:20px;
+  width:20px;
+`

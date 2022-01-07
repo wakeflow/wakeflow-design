@@ -22,9 +22,11 @@ function App() {
     <Container className="App">
       {/* <Badge/> */}
       <Input
-        placeholder='hello'
-        error="this is an error message"
+        // placeholder='hello'
+        // error="this is an error message"
         label="Name"
+        deletable
+        copyable
         required
         schema={{
           type: `string`,
