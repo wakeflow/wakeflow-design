@@ -1,9 +1,7 @@
 import { useState } from "react"
 import { GitHub,Linkedin } from "react-feather"
 import styled from "styled-components"
-import {
-  Badge,Button,DownloadButton,Loader,Map,ContactCard,Input, 
-} from "./components/index.js"
+import { Badge,Button,DownloadButton,Loader,Map,ContactCard } from "./components/index.js"
 import { lightBlue,lightPink,lightPurple } from "./utils/colours.js"
 
 //TODO Two Loader Color bug
@@ -21,7 +19,7 @@ function App() {
   return (
     <Container className="App">
       {/* <Badge/> */}
-      <Input
+      {/* <Input
         // placeholder='hello'
         // error="this is an error message"
         label="Name"
@@ -33,8 +31,8 @@ function App() {
           enum: [`all`,`exclude`,`include`],
           maxLength: 3,
         }}
-      />
-      <Input
+      /> */}
+      {/* <Input
         prefix='£'
         label="Amount"
         type='number'
@@ -48,7 +46,7 @@ function App() {
         onEnter={() => console.log(`entered`)}
         label="Email"
         required
-      />
+      /> */}
       {/* <Button 
         keyPress="Enter" 
         text="test" 
