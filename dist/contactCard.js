@@ -11,7 +11,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _colourConvertor = _interopRequireWildcard(require("../utils/colourConvertor"));
+var _colourConvertor = _interopRequireWildcard(require("./utils/colourConvertor.js"));
 
 var _biographyCard = _interopRequireDefault(require("./biographyCard"));
 

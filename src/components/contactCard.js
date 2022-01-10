@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import colorConvertor,{ addTransparencyToRgba } from '../utils/colourConvertor'
+import colorConvertor,{ addTransparencyToRgba } from './utils/colourConvertor.js'
 import BiographyCard from './biographyCard'
 import EmailPhoneCard from './emailPhoneCard'
 

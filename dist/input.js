@@ -11,7 +11,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _validate = require("../utils/validate");
+var _validate = require("./utils/validate");
 
 var _reactFeather = require("react-feather");
 

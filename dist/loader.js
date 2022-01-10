@@ -11,9 +11,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _colourConvertor = _interopRequireWildcard(require("../utils/colourConvertor"));
+var _colourConvertor = _interopRequireWildcard(require("./utils/colourConvertor"));
 
-var _colours = require("../utils/colours");
+var _colours = require("./utils/colours.js");
 
 var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Mail,Phone } from 'react-feather'
 import styled from 'styled-components'
-import colorConvertor,{ addTransparencyToRgba } from '../utils/colourConvertor'
+import colorConvertor,{ addTransparencyToRgba } from './utils/colourConvertor.js'
 
 const EmailPhoneCard = ({ email,phone,color }) => {
   const handleClick = clicked => {

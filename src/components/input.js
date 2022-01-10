@@ -1,6 +1,6 @@
 import React,{ useState,useEffect,useRef } from 'react'
 import styled from 'styled-components'
-import { validate } from '../utils/validate'
+import { validate } from './utils/validate'
 import { X,Copy } from 'react-feather'
 
 const Input = ({ 

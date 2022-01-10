@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import colorConvertor,{ addTransparencyToRgba } from '../utils/colourConvertor'
+import colorConvertor,{ addTransparencyToRgba } from './utils/colourConvertor'
 import {
   blue,lightBlue,lightPink,lightPurple,pink,purple,salmon,transparentBlack1, 
-} from '../utils/colours'
+} from './utils/colours.js'
 
 const Loader = ({ image,color }) => {
   const colorArray = []
