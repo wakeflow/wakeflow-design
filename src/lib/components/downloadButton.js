@@ -1,4 +1,4 @@
-import { Button } from "./index.js"
+import { Button } from "../index.js"
 
 const DownloadButton = ({ headers = [],data = [],fileName = ``,fileType = `text/csv` }) => {
   const downloadFile = ({ data,fileName,fileType }) => {

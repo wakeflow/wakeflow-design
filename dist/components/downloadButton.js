@@ -13,7 +13,7 @@ require("core-js/modules/web.url-search-params.js");
 
 require("core-js/modules/es.array.reduce.js");
 
-var _index = require("./index.js");
+var _index = require("../index.js");
 
 const DownloadButton = _ref => {
   let {

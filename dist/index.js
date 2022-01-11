@@ -52,20 +52,20 @@ Object.defineProperty(exports, "Map", {
   }
 });
 
-var _a = _interopRequireDefault(require("./a.js"));
+var _button = _interopRequireDefault(require("./components/button.js"));
 
-var _badge = _interopRequireDefault(require("./badge.js"));
+var _a = _interopRequireDefault(require("./components/a.js"));
 
-var _button = _interopRequireDefault(require("./button.js"));
+var _badge = _interopRequireDefault(require("./components/badge.js"));
 
-var _contactCard = _interopRequireDefault(require("./contactCard.js"));
+var _loader = _interopRequireDefault(require("./components/loader.js"));
 
-var _downloadButton = _interopRequireDefault(require("./downloadButton.js"));
+var _map = _interopRequireDefault(require("./components/map.js"));
 
-var _input = _interopRequireDefault(require("./input.js"));
+var _input = _interopRequireDefault(require("./components/input.js"));
 
-var _loader = _interopRequireDefault(require("./loader.js"));
+var _contactCard = _interopRequireDefault(require("./components/contactCard"));
 
-var _map = _interopRequireDefault(require("./map.js"));
+var _downloadButton = _interopRequireDefault(require("./components/downloadButton"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
