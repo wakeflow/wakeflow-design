@@ -1,7 +1,9 @@
 import { useState } from "react"
 import { GitHub,Linkedin } from "react-feather"
 import styled from "styled-components"
-import { Badge,Button,DownloadButton,Loader,Map,ContactCard } from "./lib/index.js"
+import {
+  Badge,Button,DownloadButton,Loader,Map,ContactCard,Input, 
+} from "./lib/index.js"
 import { lightBlue,lightPink,lightPurple } from "./lib/components/utils/colours.js"
 
 //TODO Two Loader Color bug
@@ -19,19 +21,21 @@ function App() {
   return (
     <Container className="App">
       {/* <Badge/> */}
-      {/* <Input
+      <Input
         // placeholder='hello'
         // error="this is an error message"
         label="Name"
         deletable
         copyable
         required
+        backgroundColor="rgba(28, 28, 28, 0.9)"
+        labelColor="white"
         schema={{
           type: `string`,
           enum: [`all`,`exclude`,`include`],
           maxLength: 3,
         }}
-      /> */}
+      />
       {/* <Input
         prefix='£'
         label="Amount"
@@ -53,10 +57,10 @@ function App() {
         // disabled
         onClick={() => console.log(`Clicked`)}/> */}
       {/* <DownloadButton/> */}
-      <Container2>
+      {/* <Container2>
         <Loader image={imageUrl}/>
         <Loader image={imageUrl} color='black' />
-      </Container2>
+      </Container2> */}
       
       {/* <Map pin={ { color: `blue`,lat: `51.525261`,lng: `-0.167490` } } apiKey='' /> */}
       {/* <ContactCard image="/JoshProfilePhoto_1.jpg" color={{ primaryColor: `rgb(158, 83, 213)`,secondaryColor: `rgb(51, 213, 187)`,textColor: `white` }} bio={pseudoBio}/>
@@ -78,7 +82,8 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   box-sizing:border-box;
-  background-color:lightblue;
+  background: url(/pinkFlowers.jpg) no-repeat center;
+  background-size: cover;
   padding:10px;
   display:flex;
   flex-direction:column;

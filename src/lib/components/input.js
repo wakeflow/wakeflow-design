@@ -20,6 +20,8 @@ const Input = ({
   copyable,
   deletable,
   style,
+  backgroundColor,
+  labelColor,
 }) => {
 
   const ref = useRef()
@@ -48,11 +50,12 @@ const Input = ({
   if(onError) onError(error)
 
   return (
-    <Container onClick={() => ref.current.focus()}>
+    <Container backgroundColor={backgroundColor} onClick={() => ref.current.focus()}>
       <Label 
         className='input-label'
         value={currentValue}
-        error={error}>{label}{required && `*`}</Label>
+        error={error}
+        color={labelColor}>{label}{required && `*`}</Label>
       <Inline
         value={currentValue}
         error={error}
@@ -84,6 +87,7 @@ export default Input
 const Container = styled.div`
   display:flex;
   flex-direction:column;
+  background-color: ${p => p.backgroundColor ? p.backgroundColor : ``};
   backdrop-filter: brightness(1.15);
   border-radius: 4px;
   padding:8px 10px;.2
@@ -96,7 +100,8 @@ const Container = styled.div`
   }
 `
 const Label = styled.div`
-  color:${p => p.error ? `red` : `rgb(70,70,70)`};
+  color: ${p => p.color ? p.color : `rgb(70,70,70)`};
+  color:${p => p.error ? `red` : ``};
   font-size:${p => p.value ? `0.8rem` : `1rem`};
   transition:font-size 0.2s;
 `
