@@ -100,8 +100,7 @@ const Container = styled.div`
   }
 `
 const Label = styled.div`
-  color: ${p => p.color ? p.color : `rgb(70,70,70)`};
-  color:${p => p.error ? `red` : ``};
+  color: ${p => p.color || (p.error ? `red` : `rgb(70,70,70)`)};
   font-size:${p => p.value ? `0.8rem` : `1rem`};
   transition:font-size 0.2s;
 `
