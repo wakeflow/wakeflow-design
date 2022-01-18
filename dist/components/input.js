@@ -42,7 +42,9 @@ const Input = _ref => {
     onEnter,
     copyable,
     deletable,
-    style
+    style,
+    backgroundColor,
+    labelColor
   } = _ref;
   const ref = (0, _react.useRef)();
   const [currentValue, setCurrentValue] = (0, _react.useState)(value || "");
@@ -71,11 +73,13 @@ const Input = _ref => {
 
   if (onError) onError(error);
   return /*#__PURE__*/_react.default.createElement(Container, {
+    backgroundColor: backgroundColor,
     onClick: () => ref.current.focus()
   }, /*#__PURE__*/_react.default.createElement(Label, {
     className: "input-label",
     value: currentValue,
-    error: error
+    error: error,
+    color: labelColor
   }, label, required && "*"), /*#__PURE__*/_react.default.createElement(Inline, {
     value: currentValue,
     error: error
@@ -106,9 +110,9 @@ const Input = _ref => {
 var _default = Input;
 exports.default = _default;
 
-const Container = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display:flex;\n  flex-direction:column;\n  backdrop-filter: brightness(1.15);\n  border-radius: 4px;\n  padding:8px 10px;.2\n  cursor:text;\n  &:focus-within > .input-label{\n    font-size:0.8rem;\n  }\n  &:focus-within > .input{\n    padding-top:4px;\n  }\n"])));
+const Container = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display:flex;\n  flex-direction:column;\n  background-color: ", ";\n  backdrop-filter: brightness(1.15);\n  border-radius: 4px;\n  padding:8px 10px;.2\n  cursor:text;\n  &:focus-within > .input-label{\n    font-size:0.8rem;\n  }\n  &:focus-within > .input{\n    padding-top:4px;\n  }\n"])), p => p.backgroundColor ? p.backgroundColor : "");
 
-const Label = _styledComponents.default.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  color:", ";\n  font-size:", ";\n  transition:font-size 0.2s;\n"])), p => p.error ? "red" : "rgb(70,70,70)", p => p.value ? "0.8rem" : "1rem");
+const Label = _styledComponents.default.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  color: ", ";\n  font-size:", ";\n  transition:font-size 0.2s;\n"])), p => p.color || (p.error ? "red" : "rgb(70,70,70)"), p => p.value ? "0.8rem" : "1rem");
 
 const StyledInput = _styledComponents.default.input(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  border:none;\n  background:transparent;\n  flex:1 1;\n  padding:0;\n  font-size:1rem;\n  outline:none;\n"])));
 
