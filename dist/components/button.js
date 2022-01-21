@@ -98,7 +98,7 @@ const Button = _ref => {
       left: coords.x,
       top: coords.y
     }
-  }) : "", /*#__PURE__*/_react.default.createElement(ButtonIcon, {
+  }) : "", icon && /*#__PURE__*/_react.default.createElement(ButtonIcon, {
     src: icon
   }), text);
 };

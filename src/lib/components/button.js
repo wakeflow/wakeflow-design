@@ -60,7 +60,7 @@ const Button = ({
       ) : (
         ``
       )}
-      <ButtonIcon src={icon} />
+      {icon && <ButtonIcon src={icon} />}
       {text}
     </Container>
   )
