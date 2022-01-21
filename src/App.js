@@ -20,7 +20,7 @@ function App() {
   // const imageUrl = `/JoshProfilePhoto_1.jpg`
   return (
     <Container className="App">
-      {/* <Badge/> */}
+      {/* <Badge/>
       <Input
         // placeholder='hello'
         // error="this is an error message"
@@ -35,7 +35,7 @@ function App() {
           enum: [`all`,`exclude`,`include`],
           maxLength: 3,
         }}
-      />
+      /> */}
       {/* <Input
         prefix='£'
         label="Amount"
@@ -51,11 +51,14 @@ function App() {
         label="Email"
         required
       /> */}
-      {/* <Button 
+      <Button 
         keyPress="Enter" 
         text="test" 
         // disabled
-        onClick={() => console.log(`Clicked`)}/> */}
+        onClick={() => console.log(`Clicked`)}
+        icon="/JoshProfilePhoto_1.jpg"
+      />
+        
       {/* <DownloadButton/> */}
       {/* <Container2>
         <Loader image={imageUrl}/>

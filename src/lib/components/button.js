@@ -2,7 +2,9 @@ import React,{ useEffect,useState } from 'react'
 import styled from 'styled-components'
 import { useRef } from 'react'
 
-const Button = ({ text,onClick,style,disabled,keyPress,...rest }) => {
+const Button = ({
+  text,onClick,style,disabled,keyPress,icon,...rest 
+}) => {
   const ref = useRef()
   const [coords,setCoords] = useState({ x: -1,y: -1 })
   const [isRippling,setIsRippling] = useState(false)
@@ -58,6 +60,7 @@ const Button = ({ text,onClick,style,disabled,keyPress,...rest }) => {
       ) : (
         ``
       )}
+      <ButtonIcon src={icon} />
       {text}
     </Container>
   )
@@ -80,6 +83,10 @@ const Container = styled.button`
   white-space:nowrap;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:5px;
   &:hover{
     transform: scale(1.1);
   }
@@ -110,4 +117,7 @@ const Container = styled.button`
   }
 }
 `
-
+const ButtonIcon = styled.img`
+  width: 20px;
+  aspect-ratio: 1 / 1;
+`
