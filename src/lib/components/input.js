@@ -1,7 +1,7 @@
 import React,{ useState,useEffect,useRef } from 'react'
 import styled from 'styled-components'
 import { validate } from './utils/validate'
-import { X,Copy } from 'react-feather'
+import { X,Copy,Eye,EyeOff } from 'react-feather'
 
 const Input = ({ 
   type,
@@ -27,6 +27,7 @@ const Input = ({
   const ref = useRef()
   const [currentValue,setCurrentValue] = useState(value || ``)
   const [visited,setVisited] = useState(false)
+  const [passwordToggle,setPasswordToggle] = useState(false)
   useEffect(() => setCurrentValue(value || ``),[value])
   if(schema && visited && currentValue) error = validate(currentValue,schema).join(`, `)
   error = (required && visited && !currentValue) ? `This value is required` : error
@@ -48,7 +49,12 @@ const Input = ({
   }
 
   if(onError) onError(error)
-
+  const handlePasswordToggle = () => {
+    const inputBox = document.querySelector(`#passwordInput`)
+    const type = inputBox.getAttribute(`type`) === `password` ? `text` : `password`
+    inputBox.setAttribute(`type`,type)
+    setPasswordToggle(!passwordToggle)
+  }
   return (
     <Container backgroundColor={backgroundColor} onClick={() => ref.current.focus()}>
       <Label 
@@ -56,27 +62,33 @@ const Input = ({
         value={currentValue}
         error={error}
         color={labelColor}>{label}{required && `*`}</Label>
-      <Inline
-        value={currentValue}
-        error={error}
-      >
-        {prefix && <Prefix value={currentValue}>{prefix}</Prefix>}
-        <StyledInput
-          type={type}
-          className='input'
-          ref={ref}
-          error={error}
-          placeholder={placeholder}
+      <InlineContainer>
+        <Inline
           value={currentValue}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          onKeyUp={handleKeyUp}
-          style={style}
-        />
-        {postfix && <Postfix value={currentValue}>{postfix}</Postfix>}
-        {copyable && currentValue && <StyledCopy onClick={() => navigator.clipboard.writeText(currentValue)}/>}
-        {deletable && currentValue && <StyledX onClick={() => setCurrentValue(``)}/>}
-      </Inline>
+          error={error}
+        >
+          {prefix && <Prefix value={currentValue}>{prefix}</Prefix>}
+          <StyledInput
+            id={type === `password` ? `passwordInput` : ``}
+            type={type}
+            className='input'
+            ref={ref}
+            error={error}
+            placeholder={placeholder}
+            value={currentValue}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            onKeyUp={handleKeyUp}
+            style={style}
+          />
+        
+          {postfix && <Postfix value={currentValue}>{postfix}</Postfix>}
+          {copyable && currentValue && <StyledCopy onClick={() => navigator.clipboard.writeText(currentValue)}/>}
+          {deletable && currentValue && <StyledX onClick={() => setCurrentValue(``)}/>}
+        </Inline>
+        {type === `password` && !passwordToggle && currentValue && <Eye color={labelColor} cursor="pointer" style={{ marginLeft: `auto` }} onClick={handlePasswordToggle}/>}
+        {type === `password` && passwordToggle && currentValue && <EyeOff color={labelColor} cursor="pointer" style={{ marginLeft: `auto` }} onClick={handlePasswordToggle} />}
+      </InlineContainer>
       {error && <Error className='input-error' >{error}</Error>}
     </Container>
   )
@@ -92,6 +104,7 @@ const Container = styled.div`
   border-radius: 4px;
   padding:8px 10px;.2
   cursor:text;
+  width: 100%;
   &:focus-within > .input-label{
     font-size:0.8rem;
   }
@@ -99,12 +112,17 @@ const Container = styled.div`
     padding-top:4px;
   }
 `
+const InlineContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`
 const Label = styled.div`
   color: ${p => p.color || (p.error ? `red` : `rgb(70,70,70)`)};
   font-size:${p => p.value ? `0.8rem` : `1rem`};
   transition:font-size 0.2s;
 `
 const StyledInput = styled.input`
+  width: 100%;
   border:none;
   background:transparent;
   flex:1 1;

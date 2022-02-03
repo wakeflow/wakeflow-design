@@ -20,22 +20,27 @@ function App() {
   // const imageUrl = `/JoshProfilePhoto_1.jpg`
   return (
     <Container className="App">
-      {/* <Badge/>
-      <Input
-        // placeholder='hello'
-        // error="this is an error message"
-        label="Name"
-        deletable
-        copyable
-        required
-        backgroundColor="rgba(28, 28, 28, 0.9)"
-        labelColor="white"
-        schema={{
-          type: `string`,
-          enum: [`all`,`exclude`,`include`],
-          maxLength: 3,
-        }}
-      /> */}
+      {/* <Badge/> */}
+      <Container2>
+        <Input
+          placeholder=''
+          label="Password"
+          backgroundColor="rgba(28, 28, 28, 0.9)"
+          labelColor="white"
+          type="password"
+        />
+        <Input
+          placeholder=''
+          label="Text"
+          backgroundColor="rgba(28, 28, 28, 0.9)"
+          labelColor="white"
+        />
+      </Container2>
+      {/* schema={{
+            type: `password`,
+            enum: [`all`,`exclude`,`include`],
+            maxLength: 3,
+          }} */}
       {/* <Input
         prefix='£'
         label="Amount"
@@ -51,14 +56,14 @@ function App() {
         label="Email"
         required
       /> */}
-      <Button 
+      {/* <Button 
         keyPress="Enter" 
         text="test" 
         // disabled
         onClick={() => console.log(`Clicked`)}
         icon="/JoshProfilePhoto_1.jpg"
       />
-        
+         */}
       {/* <DownloadButton/> */}
       {/* <Container2>
         <Loader image={imageUrl}/>
@@ -93,5 +98,8 @@ const Container = styled.div`
   gap:10px;
 `
 const Container2 = styled.div`
-  width: 500px;
+display: flex;
+flex-direction: column;
+  width: 10vw;
+  gap: 20px;
 `
