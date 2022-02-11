@@ -21,8 +21,8 @@ jobs:
           token: ${{ secrets.NPM_TOKEN_ANDI }}
       - run: yarn
       - uses: chromaui/action@v1
-      env: 
-        INPUT_TOKEN: ''
+        env: 
+          INPUT_TOKEN: ''
         with:          
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
