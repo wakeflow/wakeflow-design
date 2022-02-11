@@ -5,6 +5,7 @@ import {
   Badge,Button,DownloadButton,Loader,Map,ContactCard,Input, 
 } from "./lib/index.js"
 import { lightBlue,lightPink,lightPurple } from "./lib/components/utils/colours.js"
+import Mainpage from "./website/mainPage.js"
 
 //TODO Two Loader Color bug
 function App() {
@@ -20,8 +21,9 @@ function App() {
   // const imageUrl = `/JoshProfilePhoto_1.jpg`
   return (
     <Container className="App">
+      <Mainpage/>
       {/* <Badge/> */}
-      <Container2>
+      {/* <Container2>
         <Input
           placeholder=''
           label="Password"
@@ -35,7 +37,7 @@ function App() {
           backgroundColor="rgba(28, 28, 28, 0.9)"
           labelColor="white"
         />
-      </Container2>
+      </Container2> */}
       {/* schema={{
             type: `password`,
             enum: [`all`,`exclude`,`include`],
@@ -92,14 +94,4 @@ const Container = styled.div`
   box-sizing:border-box;
   background: url(/pinkFlowers.jpg) no-repeat center;
   background-size: cover;
-  padding:10px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-`
-const Container2 = styled.div`
-display: flex;
-flex-direction: column;
-  width: 10vw;
-  gap: 20px;
 `

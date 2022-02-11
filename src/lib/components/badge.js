@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Badge = ({ text = `5.12+` }) => {
   return (
@@ -8,8 +9,9 @@ const Badge = ({ text = `5.12+` }) => {
     </Container>
   )
 }
-
 export default Badge
+
+Badge.propTypes = { text: PropTypes.string }
 
 const Container = styled.div`
   display:flex;
