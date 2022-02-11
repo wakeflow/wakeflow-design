@@ -9,11 +9,6 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - run: yarn
-      - uses: chromaui/action@v1
-        with:          
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          # token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
@@ -24,4 +19,9 @@ jobs:
         with:
           access: public
           token: ${{ secrets.NPM_TOKEN_ANDI }}
+      - run: yarn
+      - uses: chromaui/action@v1
+        with:          
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       
