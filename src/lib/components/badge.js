@@ -2,16 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const Badge = ({ text = `5.12+` }) => {
+const Badge = ({ text = `5.12+`,css }) => {
   return (
-    <Container>
+    <Container css={css}>
       <Text>{text}</Text>
     </Container>
   )
 }
 export default Badge
 
-Badge.propTypes = { text: PropTypes.string }
+Badge.propTypes = { text: PropTypes.string,css: PropTypes.string }
 
 const Container = styled.div`
   display:flex;
@@ -24,6 +24,7 @@ const Container = styled.div`
   vertical-align:center;
   align-items:center;
   justify-content:center;
+  ${p => p.css ? p.css : ``}
 `
 const Text = styled.div`
 `

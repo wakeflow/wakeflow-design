@@ -14,14 +14,14 @@ SimpleInput.args = {
   label: `Username`,
   backgroundColor: `rgba(28, 28, 28, 0.9)`,
   labelColor: `white`,
-  style: { color: `white` },
+  css: `> div > div > input {color: white;}`,
 }
 export const PasswordInput = Template.bind({})
 PasswordInput.args = { 
   label: `Password`,
   backgroundColor: `rgba(28, 28, 28, 0.9)`,
   labelColor: `white`,
-  style: { color: `white` },
+  css: `> div > div > input {color: white;}`,
   type: `password`,
   required: true,
 }

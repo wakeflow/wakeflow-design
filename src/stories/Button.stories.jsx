@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button } from './Button.jsx'
+
+import Button from '../lib/components/button'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -17,12 +18,20 @@ export const StyledButton = Template.bind({})
 StyledButton.args = {
   text: `Styled Button`,
   onClick: () => console.log(`I am a styled button 🤗`),
-  style: { backgroundColor: `#afeeee`,borderRadius: `0px`,color: `black` },
+  css: `background-color: #afeeee;
+  border-radius: 0px;
+  color: black;
+  `,
 }
 
 export const IconButton = Template.bind({})
 IconButton.args = {
-  style: { backgroundColor: `rgba(29, 111, 66,0.9)`,color: `white`,padding: `5px 10px`,fontSize: `1rem`,border: `1px solid white`,borderRadius: `0px` },
+  css: `background-color: rgba(29, 111, 66,0.9);
+  color: white;
+  padding: 5px 10px;
+  font-size: 1rem;
+  border: 1px solid white;
+  border-radius: 0px;`,
   text: `Download`,
   onClick: () => console.log(`A download button!`),
   icon: `./excel.png`,

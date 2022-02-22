@@ -8,16 +8,17 @@ export default {
   component: ContactCard,
 }
 const Template = args => <ContactCard {...args} />
+export const DefaultContactCard = Template.bind({})
 
-export const PrimaryContactCard = Template.bind({})
-PrimaryContactCard.args = {
-  image: `./JoshProfilePhoto_1.jpg`,
+export const RandomContactCard = Template.bind({})
+RandomContactCard.args = {
+  image: `https://robohash.org/default`,
   color: { primaryColor: `rgb(158, 83, 213)`,secondaryColor: `rgb(51, 213, 187)`,textColor: `white` },
   bio: {
-    name: `Joshua Ryland`,
-    additionalDetails: `Developer\n Wakeflow\n 34 Rue du Fer A Moulin, 75005, Paris`,
-    links: [{ url: `https://github.com/JRyGithub`,icon: GitHub },{ url: `https://www.linkedin.com/in/joshua-ryland/`,icon: Linkedin }],
-    email: `josh@wakeflow.io`,
-    phone: `+33769887928`,
+    name: `Mr Robot`,
+    additionalDetails: `Hi this a bunch of random information about me`,
+    links: [{ url: `https://github.com/`,icon: GitHub },{ url: `https://www.linkedin.com/`,icon: Linkedin }],
+    email: `email@wakeflow.io`,
+    phone: `+3345988237`,
   },
 }
