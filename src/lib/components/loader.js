@@ -4,6 +4,7 @@ import colorConvertor,{ addTransparencyToRgba } from './utils/colourConvertor'
 import {
   blue,lightBlue,lightPink,lightPurple,pink,purple,salmon,transparentBlack1, 
 } from './utils/colours.js'
+import PropTypes from 'prop-types'
 
 const Loader = ({ image,color }) => {
   const colorArray = []
@@ -30,6 +31,10 @@ const Loader = ({ image,color }) => {
 
 export default Loader
 
+Loader.propTypes = {
+  image: PropTypes.string,
+  color: PropTypes.string,
+}
 const Container = styled.div`
   display: flex;
   flex-direction: column;

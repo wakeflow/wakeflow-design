@@ -2,6 +2,7 @@ import React,{ useState,useEffect,useRef } from 'react'
 import styled from 'styled-components'
 import { validate } from './utils/validate'
 import { X,Copy,Eye,EyeOff } from 'react-feather'
+import PropTypes from 'prop-types'
 
 const Input = ({ 
   type,
@@ -96,13 +97,26 @@ const Input = ({
 
 export default Input
 
+Input.propTypes = { 
+  type: PropTypes.string,
+  label: PropTypes.string,
+  required: PropTypes.bool,
+  backgroundColor: PropTypes.string,
+  labelColor: PropTypes.string,
+  style: PropTypes.shape({}),
+  deletable: PropTypes.bool,
+  onChange: PropTypes.func,
+  onEnter: PropTypes.func,
+  copyable: PropTypes.bool,
+  onBlur: PropTypes.func,
+}
 const Container = styled.div`
   display:flex;
   flex-direction:column;
   background-color: ${p => p.backgroundColor ? p.backgroundColor : ``};
   backdrop-filter: brightness(1.15);
   border-radius: 4px;
-  padding:8px 10px;.2
+  padding:8px 10px;
   cursor:text;
   width: 100%;
   &:focus-within > .input-label{
@@ -137,8 +151,8 @@ const Error = styled.div`
 `
 const Inline = styled.div`
   display:flex;
-  justify-content:space-between
-  align-items:center;
+  justify-content:space-between;
+  align-items: center;
   padding-top:${p => (p.value || p.error) ? `4px` : ``};
   max-height:${p => p.value ? `unset` : 0};
   border-bottom:1px solid ${p => p.error ? `red` : `transparent`};
