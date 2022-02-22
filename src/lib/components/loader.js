@@ -6,13 +6,13 @@ import {
 } from './utils/colours.js'
 import PropTypes from 'prop-types'
 
-const Loader = ({ image,color }) => {
+const Loader = ({ image,color,css }) => {
   const colorArray = []
   if(color)
     for(let i = 0;i < 7;i++)
       colorArray.push(addTransparencyToRgba(colorConvertor(color),`.${i + 3}`))
   return (
-    <Container>
+    <Container css={css}>
       <Img src={image} />
       <LoaderContainer>
         <LoadingBar 
@@ -34,12 +34,14 @@ export default Loader
 Loader.propTypes = {
   image: PropTypes.string,
   color: PropTypes.string,
+  css: PropTypes.string,
 }
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  ${p => p.css ? p.css : ``}
 `
 const Img = styled.img`
   max-width: 500px;
@@ -50,7 +52,8 @@ const Img = styled.img`
   }
 `
 const LoaderContainer = styled.div`
-  width: 100%; 
+  width: 100%;
+  max-width: 500px; 
   margin: 0 auto;
   border-radius: 10px;
   border: 1px solid transparent;

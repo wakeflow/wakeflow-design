@@ -3,15 +3,16 @@ import styled from 'styled-components'
 import colorConvertor,{ addTransparencyToRgba } from './utils/colourConvertor.js'
 import BiographyCard from './biographyCard'
 import EmailPhoneCard from './emailPhoneCard'
+import PropTypes from 'prop-types'
 
-const ContactCard = ({ image = ``,color = { primaryColor: `white`,secondaryColor: `silver`,textColor: `black` },bio = { name: ``,additionalDetails: ``,links: [{ url: ``,icon: {} }],email: ``,phone: `` } }) => {
+const ContactCard = ({ image = ``,color = { primaryColor: `white`,secondaryColor: `silver`,textColor: `black` },bio = { name: ``,additionalDetails: ``,links: [{ url: ``,icon: {} }],email: ``,phone: `` } },css) => {
   const backgroundColorOneRgba = colorConvertor(color.primaryColor)
   const backgroundColorTwoRgba = colorConvertor(color.secondaryColor)
   let imageBorderColor = colorConvertor(color.secondaryColor)
   imageBorderColor = addTransparencyToRgba(imageBorderColor,`.5`)
 
   return (
-    <Container backgroundColor1={backgroundColorOneRgba} backgroundColor2={backgroundColorTwoRgba}>
+    <Container backgroundColor1={backgroundColorOneRgba} backgroundColor2={backgroundColorTwoRgba} css={css}>
       <FirstRow>
         {image && <Image src={image} borderColor={imageBorderColor}/>}
         <BiographyCard name={bio.name} additionalDetails={bio.additionalDetails} links={bio.links} color={color}/>
@@ -19,6 +20,28 @@ const ContactCard = ({ image = ``,color = { primaryColor: `white`,secondaryColor
       <EmailPhoneCard email={bio.email} phone={bio.phone} color={color} />
     </Container>
   )
+}
+
+ContactCard.propTypes = {
+  image: PropTypes.string,
+  color: PropTypes.shape(
+    {
+      primaryColor: PropTypes.string,
+      secondaryColor: PropTypes.string,
+      textColor: PropTypes.string, 
+    }),
+  css: PropTypes.string,
+  bio: PropTypes.shape(
+    {
+      name: PropTypes.string,
+      additionalDetails: PropTypes.string,
+      links: PropTypes.arrayOf(PropTypes.shape({ 
+        url: PropTypes.string,
+        icon: PropTypes.object, 
+      })),
+      email: PropTypes.string,
+      phone: PropTypes.string, 
+    }),
 }
 
 export default ContactCard
@@ -45,6 +68,7 @@ const Container = styled.div`
     transform: scale(1.01);
   }
   margin: 20px;
+  ${p => p.css ? p.css : ``}
 `
 const FirstRow = styled.div`
   display: flex;

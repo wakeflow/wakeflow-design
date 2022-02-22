@@ -1,9 +1,10 @@
 import React,{ useEffect,useState } from 'react'
 import styled from 'styled-components'
 import { useRef } from 'react'
+import PropTypes from 'prop-types'
 
 const Button = ({
-  text,onClick,style,disabled,keyPress,icon,...rest 
+  text,onClick,disabled,keyPress,icon,css,...rest
 }) => {
   const ref = useRef()
   const [coords,setCoords] = useState({ x: -1,y: -1 })
@@ -19,36 +20,35 @@ const Button = ({
   useEffect(() => {
     if (!isRippling) setCoords({ x: -1,y: -1 })
   },[isRippling])
-  
+
   const materializeEffect = e => {
     const rect = e.target.getBoundingClientRect()
     setCoords({ x: e.clientX - rect.left,y: e.clientY - rect.top })
     // onClick && onClick(e)
   }
   useEffect(() => {
-    if(ref) ref.current.addEventListener(`click`,materializeEffect)
+    if (ref) ref.current.addEventListener(`click`,materializeEffect)
   },[])
-  
+
   const handleKeyUp = e => {
-    if(e.key === keyPress) {
+    if (e.key === keyPress) {
       e.target.blur()
       ref.current.click()
     }
   }
   useEffect(() => {
-    if(keyPress) document.addEventListener(`keydown`,handleKeyUp,false)
+    if (keyPress) document.addEventListener(`keydown`,handleKeyUp,false)
     return () => {
-      if(keyPress) document.removeEventListener(`keydown`,handleKeyUp,false)
+      if (keyPress) document.removeEventListener(`keydown`,handleKeyUp,false)
     }
   },[])
-
   return (
     <Container
       ref={ref}
       {...rest}
       disabled={disabled}
-      style={style}
-      onClick={onClick}>
+      onClick={onClick}
+      css={css}>
       {isRippling ? (
         <span
           className="ripple"
@@ -66,6 +66,14 @@ const Button = ({
   )
 }
 
+Button.propTypes = {
+  text: PropTypes.string,
+  onClick: PropTypes.func,
+  css: PropTypes.string,
+  icon: PropTypes.string,
+  disabled: PropTypes.bool,
+  keyPress: PropTypes.string,
+}
 export default Button
 
 const Container = styled.button`
@@ -100,22 +108,23 @@ const Container = styled.button`
   border-radius: 9999px;
   opacity: 1;
   animation: 0.9s ease 1 forwards ripple-effect;
-}
+  }
 
-@keyframes ripple-effect {
+  @keyframes ripple-effect {
   0% {
     transform: scale(1);
     opacity: 1;
-  }
+    }
   50% {
     transform: scale(5);
     opacity: 0.375;
-  }
+    }
   100% {
     transform: scale(17);
     opacity: 0;
+    }
   }
-}
+  ${p => p.css ? p.css : ``}
 `
 const ButtonIcon = styled.img`
   width: 20px;

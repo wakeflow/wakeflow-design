@@ -20,9 +20,9 @@ const Input = ({
   onEnter,
   copyable,
   deletable,
-  style,
   backgroundColor,
   labelColor,
+  css,
 }) => {
 
   const ref = useRef()
@@ -57,7 +57,7 @@ const Input = ({
     setPasswordToggle(!passwordToggle)
   }
   return (
-    <Container backgroundColor={backgroundColor} onClick={() => ref.current.focus()}>
+    <Container backgroundColor={backgroundColor} onClick={() => ref.current.focus()} css={css} >
       <Label 
         className='input-label'
         value={currentValue}
@@ -80,7 +80,6 @@ const Input = ({
             onChange={handleChange}
             onBlur={handleBlur}
             onKeyUp={handleKeyUp}
-            style={style}
           />
         
           {postfix && <Postfix value={currentValue}>{postfix}</Postfix>}
@@ -103,13 +102,14 @@ Input.propTypes = {
   required: PropTypes.bool,
   backgroundColor: PropTypes.string,
   labelColor: PropTypes.string,
-  style: PropTypes.shape({}),
   deletable: PropTypes.bool,
   onChange: PropTypes.func,
   onEnter: PropTypes.func,
   copyable: PropTypes.bool,
   onBlur: PropTypes.func,
+  css: PropTypes.string,
 }
+
 const Container = styled.div`
   display:flex;
   flex-direction:column;
@@ -125,6 +125,8 @@ const Container = styled.div`
   &:focus-within > .input{
     padding-top:4px;
   }
+  max-width: 250px;
+  ${p => p.css ? p.css : ``}
 `
 const InlineContainer = styled.div`
   display: flex;
