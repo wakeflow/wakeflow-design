@@ -36,7 +36,23 @@ DateInput.args = {
 export const InputDropdown = Template.bind({})
 InputDropdown.args = {
   label: `Languages`,
-  list: [`Java`,`Javascript`,`Python`,`C++`,`Go`],
+  list: [
+    {
+      value: `Java123`,
+      label: `Java`,
+    },
+    {
+      value: `Javascript5`,
+      label: `Javascript`,
+    },{
+      value: `python1`,
+      label: `Python`,
+    },
+    {
+      value: `3214`,
+      label: `Go`,
+    },
+  ],
   backgroundColor: `rgba(29, 243, 29, 0.9)`,
   css: `> div > div > input {color: black;}`,
   labelColor: `black`,

@@ -85,8 +85,8 @@ const Input = ({
           />
           {list && 
             <datalist id="options">
-              {list.map(item => {
-                return <option value={item}/>
+              {list.map((item,index) => {
+                return <option key={index} value={item.value}>{item.label}</option>
               })}
             </datalist>
           }

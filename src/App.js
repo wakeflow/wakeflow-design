@@ -11,9 +11,26 @@ function App() {
     background-color: blue;
   `
   const list = [`Java`,`Javascript`,`Python`,`C++`,`Go`]
+  const objList = [
+    {
+      value: `Java123`,
+      label: `Java`,
+    },
+    {
+      value: `Javascript5`,
+      label: `Javascript`,
+    },{
+      value: `python1`,
+      label: `Python`,
+    },
+    {
+      value: `3214`,
+      label: `Go`,
+    },
+  ]
   return (
     <Container className="App">      
-      <Input label="Languages" list={list}/>
+      <Input label="Languages" list={objList} />
       <br/>
       <Input label="Random" type="text"/>
     </Container>
