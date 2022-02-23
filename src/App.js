@@ -4,7 +4,7 @@ import styled from "styled-components"
 import {
   Badge,Button,DownloadButton,Loader,Map,ContactCard,Input, 
 } from "./lib/index.js"
-
+import { toast } from './lib/components/toaster'
 function App() {
   const css = `
     color: red;
@@ -12,7 +12,9 @@ function App() {
   `
   return (
     <Container className="App">
-      <ContactCard/>
+      <Button
+        text="test"
+        onClick={() => toast.info(`hi`)}/>
     </Container>
   )
 }

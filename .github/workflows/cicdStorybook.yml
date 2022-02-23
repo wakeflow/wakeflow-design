@@ -5,7 +5,7 @@ name: 'Chromatic'
 on: 
   push:
     branches:
-      - storybook
+      - master
 
 # List of jobs
 jobs:
