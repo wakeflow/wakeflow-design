@@ -25,3 +25,11 @@ PasswordInput.args = {
   type: `password`,
   required: true,
 }
+export const DateInput = Template.bind({})
+DateInput.args = {
+  css: `width: fit-content; > div { padding: 5px; > div > input {color: black;}}`,
+  label: `Date`,
+  backgroundColor: `rgba(243, 186, 29, 0.9)`,
+  labelColor: `black`,
+  type: `date`,
+}

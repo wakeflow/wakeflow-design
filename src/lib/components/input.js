@@ -108,6 +108,7 @@ Input.propTypes = {
   copyable: PropTypes.bool,
   onBlur: PropTypes.func,
   css: PropTypes.string,
+  schema: PropTypes.object,
 }
 
 const Container = styled.div`

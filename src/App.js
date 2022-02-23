@@ -12,9 +12,9 @@ function App() {
   `
   return (
     <Container className="App">
-      <Button
-        text="test"
-        onClick={() => toast.info(`hi`)}/>
+      <Input
+        label="Random"
+        schema={{ type: `number` }}/>
     </Container>
   )
 }
