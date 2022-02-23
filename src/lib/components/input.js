@@ -23,6 +23,7 @@ const Input = ({
   backgroundColor,
   labelColor,
   css,
+  list,
 }) => {
 
   const ref = useRef()
@@ -80,8 +81,15 @@ const Input = ({
             onChange={handleChange}
             onBlur={handleBlur}
             onKeyUp={handleKeyUp}
+            list={list ? `options` : ``}
           />
-        
+          {list && 
+            <datalist id="options">
+              {list.map(item => {
+                return <option value={item}/>
+              })}
+            </datalist>
+          }
           {postfix && <Postfix value={currentValue}>{postfix}</Postfix>}
           {copyable && currentValue && <StyledCopy onClick={() => navigator.clipboard.writeText(currentValue)}/>}
           {deletable && currentValue && <StyledX onClick={() => setCurrentValue(``)}/>}
@@ -109,6 +117,7 @@ Input.propTypes = {
   onBlur: PropTypes.func,
   css: PropTypes.string,
   schema: PropTypes.object,
+  list: PropTypes.array,
 }
 
 const Container = styled.div`
@@ -154,6 +163,7 @@ const Error = styled.div`
 `
 const Inline = styled.div`
   display:flex;
+  width: 100%;
   justify-content:space-between;
   align-items: center;
   padding-top:${p => (p.value || p.error) ? `4px` : ``};

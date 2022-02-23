@@ -10,11 +10,12 @@ function App() {
     color: red;
     background-color: blue;
   `
+  const list = [`Java`,`Javascript`,`Python`,`C++`,`Go`]
   return (
-    <Container className="App">
-      <Input
-        label="Random"
-        schema={{ type: `number` }}/>
+    <Container className="App">      
+      <Input label="Languages" list={list}/>
+      <br/>
+      <Input label="Random" type="text"/>
     </Container>
   )
 }
@@ -28,4 +29,5 @@ const Container = styled.div`
   box-sizing:border-box;
   background: url(/pinkFlowers.jpg) no-repeat center;
   background-size: cover;
+  gap: 10px;
 `
