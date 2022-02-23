@@ -6,6 +6,8 @@ Allowing for ease of use across all company assets
 
 Built using styled components and react
 
+Check out the components in our [Storybook](https://62064b9944b6a6003ab7c598-vompuwcrxj.chromatic.com/)
+
 ## How it works
 
 To use Wakeflow design button:
