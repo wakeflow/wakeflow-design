@@ -1,35 +1,26 @@
 import React from 'react'
-import 'antd/dist/antd.css'
-import { DatePicker } from 'antd'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
+import 'antd/dist/antd.css'
+import { TimePicker } from 'antd'
 
-const DateInput = ({ value,onChange,css,inputFormat = `MM/DD/YYYY`,size = `large` }) => {
+const TimeInput = ({ value,css,onChange,inputFormat = `HH:mm`,size = `large` }) => {
   return (
     <Container css={css}>
-      <DatePicker
+      <TimePicker
         value={value}
         format={inputFormat}
         size={size}
-        onChange={change => {onChange(change)}}/>
+        minuteStep={1}
+        onChange={onChange}/>
     </Container>
   )
 }
 
-DateInput.propTypes = { 
-  css: PropTypes.string,
-  value: PropTypes.string,
-  inputFormat: PropTypes.string,
-  size: PropTypes.string,
-  onChange: PropTypes.func,
-}
-
-export default DateInput
+export default TimeInput
 
 export const Container = styled.div`
   .ant-picker{
     background-color: white;
-    color: black;
     border-radius:6px;
     border-width:2px;
     border-right-width:2px !important;

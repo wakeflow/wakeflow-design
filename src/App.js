@@ -30,9 +30,10 @@ function App() {
   ]
   return (
     <Container className="App">      
-      <Input label="Languages" list={objList} />
+      {/* <Input label="Languages" list={objList} />
       <br/>
-      <Input label="Random" type="text"/>
+      <Input label="Random" type="text"/> */}
+      <Input type='dateTime'/>
     </Container>
   )
 }

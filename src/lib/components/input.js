@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import { validate } from './utils/validate'
 import { X,Copy,Eye,EyeOff } from 'react-feather'
 import PropTypes from 'prop-types'
+import DateInput from './dateInput'
+import TimeInput from './timeInput'
+import DateTimeInput from './dateTimeInput'
 
 const Input = ({ 
   type,
@@ -24,6 +27,8 @@ const Input = ({
   labelColor,
   css,
   list,
+  size,
+  inputFormat,
 }) => {
 
   const ref = useRef()
@@ -57,6 +62,10 @@ const Input = ({
     inputBox.setAttribute(`type`,type)
     setPasswordToggle(!passwordToggle)
   }
+  if(type === `date`) return <DateInput value={value} label={label} onChange={onChange} css={css} inputFormat={inputFormat} size={size}/>
+  if(type === `time`) return <TimeInput value={value} label={label} onChange={onChange} css={css} inputFormat={inputFormat} size={size}/>
+  if(type === `dateTime`) return <DateTimeInput value={value} onChange={onChange} css={css} />
+
   return (
     <Container backgroundColor={backgroundColor} onClick={() => ref.current.focus()} css={css} >
       <Label 

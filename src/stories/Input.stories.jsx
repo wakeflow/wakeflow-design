@@ -33,6 +33,15 @@ DateInput.args = {
   labelColor: `black`,
   type: `date`,
 }
+export const TimeInput = Template.bind({})
+TimeInput.args = {
+  type: `time`,
+  label: `Time`,
+}
+
+export const DateTimeInput = Template.bind({})
+DateTimeInput.args = { type: `dateTime` }
+
 export const InputDropdown = Template.bind({})
 InputDropdown.args = {
   label: `Languages`,
