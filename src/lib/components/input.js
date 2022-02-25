@@ -6,6 +6,9 @@ import PropTypes from 'prop-types'
 import DateInput from './dateInput'
 import TimeInput from './timeInput'
 import DateTimeInput from './dateTimeInput'
+import PasswordInput from './passwordInput'
+import NormalInput from './normalInput'
+import DropdownInput from './dropdownInput'
 
 const Input = ({ 
   type,
@@ -13,7 +16,6 @@ const Input = ({
   required,
   error,
   schema,
-  placeholder,
   value, 
   prefix = ``,
   postfix = ``,
@@ -24,17 +26,16 @@ const Input = ({
   copyable,
   deletable,
   backgroundColor,
-  labelColor,
   css,
-  list,
   size,
+  labelColor,
   inputFormat,
+  ...rest
 }) => {
 
   const ref = useRef()
   const [currentValue,setCurrentValue] = useState(value || ``)
   const [visited,setVisited] = useState(false)
-  const [passwordToggle,setPasswordToggle] = useState(false)
   useEffect(() => setCurrentValue(value || ``),[value])
   if(schema && visited && currentValue) error = validate(currentValue,schema).join(`, `)
   error = (required && visited && !currentValue) ? `This value is required` : error
@@ -57,15 +58,10 @@ const Input = ({
   }
 
   if(onError) onError(error)
-  const handlePasswordToggle = () => {
-    const inputBox = document.querySelector(`#passwordInput`)
-    const type = inputBox.getAttribute(`type`) === `password` ? `text` : `password`
-    inputBox.setAttribute(`type`,type)
-    setPasswordToggle(!passwordToggle)
-  }
-  if(type === `date`) return <DateInput value={value} label={label} onChange={onChange} css={css} inputFormat={inputFormat} size={size}/>
-  if(type === `time`) return <TimeInput value={value} label={label} onChange={onChange} css={css} inputFormat={inputFormat} size={size}/>
-  if(type === `dateTime`) return <DateTimeInput value={value} onChange={onChange} css={css} />
+  
+  // if(type === `date`) return <DateInput value={value} label={label} onChange={onChange} css={css} inputFormat={inputFormat} size={size}/>
+  // if(type === `time`) return <TimeInput value={value} label={label} onChange={onChange} css={css} inputFormat={inputFormat} size={size}/>
+  // if(type === `dateTime`) return <DateTimeInput value={value} onChange={onChange} css={css} />
 
   return (
     <Container backgroundColor={backgroundColor} onClick={() => ref.current.focus()} css={css} >
@@ -80,32 +76,16 @@ const Input = ({
           error={error}
         >
           {prefix && <Prefix value={currentValue}>{prefix}</Prefix>}
-          <StyledInput
-            id={type === `password` ? `passwordInput` : ``}
-            type={type}
-            className='input'
-            ref={ref}
-            error={error}
-            placeholder={placeholder}
-            value={currentValue}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            onKeyUp={handleKeyUp}
-            list={list ? `options` : ``}
-          />
-          {list && 
-            <datalist id="options">
-              {list.map((item,index) => {
-                return <option key={index} value={item.value}>{item.label}</option>
-              })}
-            </datalist>
-          }
+          {type === `password` && <PasswordInput labelColor={labelColor} currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}           
+          {type === `time` && <TimeInput value={value} label={label} onChange={onChange} css={css} inputFormat={inputFormat} size={size}/>}
+          {type === `date` && <DateInput value={value} label={label} onChange={onChange} css={css} inputFormat={inputFormat} size={size}/>}
+          {type === `dateTime` && <DateTimeInput value={value} onChange={onChange} css={css}/>}
+          {type === `dropdown` && <DropdownInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}
+          {(type === `text` || type === `number`) && <NormalInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}
           {postfix && <Postfix value={currentValue}>{postfix}</Postfix>}
           {copyable && currentValue && <StyledCopy onClick={() => navigator.clipboard.writeText(currentValue)}/>}
           {deletable && currentValue && <StyledX onClick={() => setCurrentValue(``)}/>}
         </Inline>
-        {type === `password` && !passwordToggle && currentValue && <Eye color={labelColor} cursor="pointer" style={{ marginLeft: `auto` }} onClick={handlePasswordToggle}/>}
-        {type === `password` && passwordToggle && currentValue && <EyeOff color={labelColor} cursor="pointer" style={{ marginLeft: `auto` }} onClick={handlePasswordToggle} />}
       </InlineContainer>
       {error && <Error className='input-error' >{error}</Error>}
     </Container>
@@ -158,7 +138,7 @@ const Label = styled.div`
   font-size:${p => p.value ? `0.8rem` : `1rem`};
   transition:font-size 0.2s;
 `
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
   width: 100%;
   border:none;
   background:transparent;
