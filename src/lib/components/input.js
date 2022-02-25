@@ -40,7 +40,8 @@ const Input = ({
   error = (required && visited && !currentValue) ? `This value is required` : error
 
   const handleChange = e => { 
-    const { value } = e.target
+    let { value } = e.target
+    if(type === `number`) value = Number(value)
     setCurrentValue(value)
     if(onChange)onChange(value)
   }
@@ -132,6 +133,7 @@ Input.propTypes = {
 const Container = styled.div`
   display:flex;
   flex-direction:column;
+  justify-content:flex-start;
   background-color: ${p => p.backgroundColor ? p.backgroundColor : ``};
   backdrop-filter: brightness(1.15);
   border-radius: 4px;
