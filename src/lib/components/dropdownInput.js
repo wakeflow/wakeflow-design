@@ -2,7 +2,7 @@ import React from 'react'
 import { StyledInput } from './input'
 
 const DropdownInput = React.forwardRef((props,ref) => {
-  const { handleChange,handleBlur,handleKeyUp,currentValue,type,list } = props
+  const { handleChange,handleBlur,currentValue,type,list } = props
   return (
     <>
       <StyledInput
@@ -12,7 +12,6 @@ const DropdownInput = React.forwardRef((props,ref) => {
         value={currentValue}
         onChange={handleChange}
         onBlur={handleBlur}
-        onKeyUp={handleKeyUp}
         list='options'/>
       <datalist id="options">
         {list.map((item,index) => {

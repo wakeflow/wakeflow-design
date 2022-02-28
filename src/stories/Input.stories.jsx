@@ -12,40 +12,35 @@ const Template = args => <Input {...args} />
 export const SimpleInput = Template.bind({})
 SimpleInput.args = { 
   label: `Username`,
-  backgroundColor: `rgba(28, 28, 28, 0.9)`,
-  labelColor: `white`,
-  css: `> div > div > input {color: white;}`,
   type: `text`,
+}
+export const NumberInput = Template.bind({})
+NumberInput.args = { 
+  label: `Number`,
+  type: `number`,
 }
 export const PasswordInput = Template.bind({})
 PasswordInput.args = { 
   label: `Password`,
-  backgroundColor: `rgba(28, 28, 28, 0.9)`,
-  labelColor: `white`,
-  css: `> div > div > input {color: white;}`,
   type: `password`,
   required: true,
 }
 export const DateInput = Template.bind({})
 DateInput.args = {
-  css: `width: fit-content; > div { > div > input {color: black;}}`,
+  css: `width: fit-content;`,
   label: `Date`,
-  backgroundColor: `rgba(243, 186, 29, 0.9)`,
-  labelColor: `black`,
   type: `date`,
 }
 export const TimeInput = Template.bind({})
 TimeInput.args = {
-  css: `width: fit-content; > div { color: white; > div > input {color: black;}}`,
-  backgroundColor: `rgba(5, 104, 1, 0.9)`,
+  css: `width: fit-content;`,
   type: `time`,
   label: `Time`,
 }
 
 export const DateTimeInput = Template.bind({})
 DateTimeInput.args = {
-  css: `width: fit-content; > div { color: white; > div > input {color: blue;}}`,
-  backgroundColor: `rgba(0, 0, 0, 0.9)`,
+  css: `width: fit-content`,
   label: `DateTime`,
   type: `dateTime`, 
 }
@@ -70,8 +65,28 @@ InputDropdown.args = {
       label: `Go`,
     },
   ],
-  backgroundColor: `rgba(29, 243, 29, 0.9)`,
-  css: `> div > div > input {color: black;}`,
-  labelColor: `black`,
   type: `dropdown`,
+}
+
+export const MultiInputDropdown = Template.bind({})
+MultiInputDropdown.args = {
+  label: `Languages`,
+  options: [
+    {
+      value: `Java123`,
+      label: `Java`,
+    },
+    {
+      value: `Javascript5`,
+      label: `Javascript`,
+    },{
+      value: `python1`,
+      label: `Python`,
+    },
+    {
+      value: `3214`,
+      label: `Go`,
+    },
+  ],
+  type: `dropdownMultiSelectBox`,
 }

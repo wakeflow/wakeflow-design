@@ -9,6 +9,8 @@ import DateTimeInput from './dateTimeInput'
 import PasswordInput from './passwordInput'
 import NormalInput from './normalInput'
 import DropdownInput from './dropdownInput'
+import DropdownMultiSelectbox from './dropdownMultiSelectBox'
+import DropdownMultiCheckbox from './dropdownMultiCheckbox'
 
 const Input = ({ 
   type,
@@ -28,7 +30,7 @@ const Input = ({
   backgroundColor,
   css,
   size,
-  labelColor,
+  highlightColor,
   inputFormat,
   ...rest
 }) => {
@@ -40,7 +42,6 @@ const Input = ({
   error = (required && visited && !currentValue) ? `This value is required` : error
 
   const handleChange = e => { 
-    
     let { value } = e.target
     if(type === `number`) value = Number(value)
     setCurrentValue(value)
@@ -58,25 +59,27 @@ const Input = ({
   }
 
   if(onError) onError(error)
-  
+
   return (
     <Container backgroundColor={backgroundColor} onClick={() => ref.current.focus()} css={css} >
       <Label 
         className='input-label'
         value={currentValue}
         error={error}
-        color={labelColor}>{label}{required && `*`}</Label>
+        color={highlightColor}>{label}{required && `*`}</Label>
       <InlineContainer >
         <Inline
           value={currentValue}
           error={error}
         >
           {prefix && <Prefix value={currentValue}>{prefix}</Prefix>}
-          {type === `password` && <PasswordInput labelColor={labelColor} currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}           
+          {type === `password` && <PasswordInput highlightColor={highlightColor} currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}           
           {type === `time` && <TimeInput ref={ref} value={currentValue} label={label} onChange={v => setCurrentValue(v)} css={css} inputFormat={inputFormat} size={size}/>}
           {type === `date` && <DateInput ref={ref} value={currentValue} label={label} onChange={v => setCurrentValue(v)} css={css} inputFormat={inputFormat} size={size}/>}
           {type === `dateTime` && <DateTimeInput ref={ref} value={currentValue} onChange={v => setCurrentValue(v)} css={css}/>}
-          {type === `dropdown` && <DropdownInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}
+          {type === `dropdown` && <DropdownInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} type={type} {...rest}/>}
+          {type === `dropdownMultiSelectBox` && <DropdownMultiSelectbox currentValue={currentValue} ref={ref} handleBlur={v => {setCurrentValue(v)}} handleChange={v => {setCurrentValue(v)}}{...rest}/>}
+          {type === `dropdownMultiCheckbox` && <DropdownMultiCheckbox currentValue={currentValue} ref={ref} handleBlur={v => {setCurrentValue(v)}} handleChange={v => {setCurrentValue(v)}}{...rest}/>}
           {(type === `text` || type === `number`) && <NormalInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}
           {postfix && <Postfix value={currentValue}>{postfix}</Postfix>}
           {copyable && currentValue && <StyledCopy onClick={() => navigator.clipboard.writeText(currentValue)}/>}
@@ -90,6 +93,15 @@ const Input = ({
 
 export default Input
 
+Input.propTypes = { 
+  css: PropTypes.string,
+  value: PropTypes.any,
+  type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
+  required: PropTypes.bool,
+}
 
 const Container = styled.div`
   display:flex;
@@ -108,6 +120,7 @@ const Container = styled.div`
     padding-top:4px;
   }
   max-width: 250px;
+  border: 2px solid black;
   ${p => p.css ? p.css : ``}
 `
 const InlineContainer = styled.div`
@@ -115,7 +128,7 @@ const InlineContainer = styled.div`
   flex-direction: row;
 `
 const Label = styled.div`
-  color: ${p => p.color || (p.error ? `red` : `rgb(70,70,70)`)};
+  color: ${p => p.color || (p.error ? `red` : `black`)};
   font-size:${p => p.value ? `0.8rem` : `1rem`};
   transition:font-size 0.2s;
 `

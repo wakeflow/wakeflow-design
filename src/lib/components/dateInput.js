@@ -19,13 +19,7 @@ const DateInput = React.forwardRef((props,ref) => {
   )
 })
 
-DateInput.propTypes = { 
-  css: PropTypes.string,
-  value: PropTypes.string,
-  inputFormat: PropTypes.string,
-  size: PropTypes.string,
-  onChange: PropTypes.func,
-}
+
 
 export default DateInput
 

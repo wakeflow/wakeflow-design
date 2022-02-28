@@ -28,16 +28,16 @@ const Container = styled.div`
     border-right-width:2px !important;
   }
   & > .ant-picker:hover{
-    border-color: transparent;
+    border-color: black;
     border-right-width:2px !important;
   }
   & > .ant-picker-focused{
-    border-color: transparent;
+    border-color: black;
     box-shadow:none;
     border-right-width:2px !important;
   }
   & >.ant-picker-input{
-    border-color: transparent; 
+    border-color: black; 
   }
   }
   & > a.ant-picker-now-btn{
