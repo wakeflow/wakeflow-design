@@ -30,7 +30,7 @@ function App() {
   ]
   return (
     <Container className="App">      
-      <Input label="Languages" list={objList} type="dropdown" />
+      {/* <Input label="Languages" list={objList} type="dropdown" />
       <br/>
       <Input label="Password" type="password"/>
       <br/>
@@ -41,7 +41,10 @@ function App() {
       <Input label="Date" type='date'/>
       <br/>
       <Input label= "DateTime" type='dateTime'/>
+      <br/> */}
+      <Input label="MultiSelect" type='dropdownMultiSelectBox' options={objList}/>
       <br/>
+      <Input label="MultiSelect" type='dropdownMultiCheckbox' options={objList}/>
     </Container>
   )
 }
