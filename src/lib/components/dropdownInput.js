@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { StyledInput } from './input'
 
 const DropdownInput = React.forwardRef((props,ref) => {
@@ -26,7 +25,3 @@ const DropdownInput = React.forwardRef((props,ref) => {
 })
 
 export default DropdownInput
-
-const Container = styled.div`
-  display:flex;
-`

@@ -32,7 +32,6 @@ const Input = ({
   inputFormat,
   ...rest
 }) => {
-
   const ref = useRef()
   const [currentValue,setCurrentValue] = useState(value || ``)
   const [visited,setVisited] = useState(false)
@@ -41,6 +40,7 @@ const Input = ({
   error = (required && visited && !currentValue) ? `This value is required` : error
 
   const handleChange = e => { 
+    
     let { value } = e.target
     if(type === `number`) value = Number(value)
     setCurrentValue(value)
@@ -59,10 +59,6 @@ const Input = ({
 
   if(onError) onError(error)
   
-  // if(type === `date`) return <DateInput value={value} label={label} onChange={onChange} css={css} inputFormat={inputFormat} size={size}/>
-  // if(type === `time`) return <TimeInput value={value} label={label} onChange={onChange} css={css} inputFormat={inputFormat} size={size}/>
-  // if(type === `dateTime`) return <DateTimeInput value={value} onChange={onChange} css={css} />
-
   return (
     <Container backgroundColor={backgroundColor} onClick={() => ref.current.focus()} css={css} >
       <Label 
@@ -70,16 +66,16 @@ const Input = ({
         value={currentValue}
         error={error}
         color={labelColor}>{label}{required && `*`}</Label>
-      <InlineContainer>
+      <InlineContainer >
         <Inline
           value={currentValue}
           error={error}
         >
           {prefix && <Prefix value={currentValue}>{prefix}</Prefix>}
           {type === `password` && <PasswordInput labelColor={labelColor} currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}           
-          {type === `time` && <TimeInput value={value} label={label} onChange={onChange} css={css} inputFormat={inputFormat} size={size}/>}
-          {type === `date` && <DateInput value={value} label={label} onChange={onChange} css={css} inputFormat={inputFormat} size={size}/>}
-          {type === `dateTime` && <DateTimeInput value={value} onChange={onChange} css={css}/>}
+          {type === `time` && <TimeInput ref={ref} value={currentValue} label={label} onChange={v => setCurrentValue(v)} css={css} inputFormat={inputFormat} size={size}/>}
+          {type === `date` && <DateInput ref={ref} value={currentValue} label={label} onChange={v => setCurrentValue(v)} css={css} inputFormat={inputFormat} size={size}/>}
+          {type === `dateTime` && <DateTimeInput ref={ref} value={currentValue} onChange={v => setCurrentValue(v)} css={css}/>}
           {type === `dropdown` && <DropdownInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}
           {(type === `text` || type === `number`) && <NormalInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}
           {postfix && <Postfix value={currentValue}>{postfix}</Postfix>}
@@ -94,21 +90,6 @@ const Input = ({
 
 export default Input
 
-Input.propTypes = { 
-  type: PropTypes.string,
-  label: PropTypes.string,
-  required: PropTypes.bool,
-  backgroundColor: PropTypes.string,
-  labelColor: PropTypes.string,
-  deletable: PropTypes.bool,
-  onChange: PropTypes.func,
-  onEnter: PropTypes.func,
-  copyable: PropTypes.bool,
-  onBlur: PropTypes.func,
-  css: PropTypes.string,
-  schema: PropTypes.object,
-  list: PropTypes.array,
-}
 
 const Container = styled.div`
   display:flex;
@@ -158,10 +139,13 @@ const Inline = styled.div`
   justify-content:space-between;
   align-items: center;
   padding-top:${p => (p.value || p.error) ? `4px` : ``};
-  max-height:${p => p.value ? `unset` : 0};
+  max-height:${p => p.value || p.show ? `unset` : 0};
   border-bottom:1px solid ${p => p.error ? `red` : `transparent`};
   &:focus-within{
     max-height:unset;
+  }
+  & > div{
+    opacity: ${p => p.show || p.value ? 1 : 0};
   }
   &:focus-within > div{
     opacity:1;

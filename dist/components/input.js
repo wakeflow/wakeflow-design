@@ -1,9 +1,11 @@
 "use strict";
 
+require("core-js/modules/es.object.assign.js");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.StyledInput = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
@@ -15,7 +17,23 @@ var _validate = require("./utils/validate");
 
 var _reactFeather = require("react-feather");
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _dateInput = _interopRequireDefault(require("./dateInput"));
+
+var _timeInput = _interopRequireDefault(require("./timeInput"));
+
+var _dateTimeInput = _interopRequireDefault(require("./dateTimeInput"));
+
+var _passwordInput = _interopRequireDefault(require("./passwordInput"));
+
+var _normalInput = _interopRequireDefault(require("./normalInput"));
+
+var _dropdownInput = _interopRequireDefault(require("./dropdownInput"));
+
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10;
+
+const _excluded = ["type", "label", "required", "error", "schema", "value", "prefix", "postfix", "onChange", "onBlur", "onError", "onEnter", "copyable", "deletable", "backgroundColor", "css", "size", "labelColor", "inputFormat"];
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25,6 +43,12 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 const Input = _ref => {
   let {
     type,
@@ -32,7 +56,6 @@ const Input = _ref => {
     required,
     error,
     schema,
-    placeholder,
     value,
     prefix = "",
     postfix = "",
@@ -42,22 +65,26 @@ const Input = _ref => {
     onEnter,
     copyable,
     deletable,
-    style,
     backgroundColor,
-    labelColor
-  } = _ref;
+    css,
+    size,
+    labelColor,
+    inputFormat
+  } = _ref,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
   const ref = (0, _react.useRef)();
   const [currentValue, setCurrentValue] = (0, _react.useState)(value || "");
   const [visited, setVisited] = (0, _react.useState)(false);
-  const [passwordToggle, setPasswordToggle] = (0, _react.useState)(false);
   (0, _react.useEffect)(() => setCurrentValue(value || ""), [value]);
   if (schema && visited && currentValue) error = (0, _validate.validate)(currentValue, schema).join(", ");
   error = required && visited && !currentValue ? "This value is required" : error;
 
   const handleChange = e => {
-    const {
+    let {
       value
     } = e.target;
+    if (type === "number") value = Number(value);
     setCurrentValue(value);
     if (onChange) onChange(value);
   };
@@ -73,17 +100,10 @@ const Input = _ref => {
   };
 
   if (onError) onError(error);
-
-  const handlePasswordToggle = () => {
-    const inputBox = document.querySelector("#passwordInput");
-    const type = inputBox.getAttribute("type") === "password" ? "text" : "password";
-    inputBox.setAttribute("type", type);
-    setPasswordToggle(!passwordToggle);
-  };
-
   return /*#__PURE__*/_react.default.createElement(Container, {
     backgroundColor: backgroundColor,
-    onClick: () => ref.current.focus()
+    onClick: () => ref.current.focus(),
+    css: css
   }, /*#__PURE__*/_react.default.createElement(Label, {
     className: "input-label",
     value: currentValue,
@@ -94,39 +114,56 @@ const Input = _ref => {
     error: error
   }, prefix && /*#__PURE__*/_react.default.createElement(Prefix, {
     value: currentValue
-  }, prefix), /*#__PURE__*/_react.default.createElement(StyledInput, {
-    id: type === "password" ? "passwordInput" : "",
-    type: type,
-    className: "input",
+  }, prefix), type === "password" && /*#__PURE__*/_react.default.createElement(_passwordInput.default, _extends({
+    labelColor: labelColor,
+    currentValue: currentValue,
     ref: ref,
-    error: error,
-    placeholder: placeholder,
+    handleBlur: handleBlur,
+    handleKeyUp: handleKeyUp,
+    handleChange: handleChange,
+    type: type
+  }, rest)), type === "time" && /*#__PURE__*/_react.default.createElement(_timeInput.default, {
+    ref: ref,
     value: currentValue,
-    onChange: handleChange,
-    onBlur: handleBlur,
-    onKeyUp: handleKeyUp,
-    style: style
-  }), postfix && /*#__PURE__*/_react.default.createElement(Postfix, {
+    label: label,
+    onChange: v => setCurrentValue(v),
+    css: css,
+    inputFormat: inputFormat,
+    size: size
+  }), type === "date" && /*#__PURE__*/_react.default.createElement(_dateInput.default, {
+    ref: ref,
+    value: currentValue,
+    label: label,
+    onChange: v => setCurrentValue(v),
+    css: css,
+    inputFormat: inputFormat,
+    size: size
+  }), type === "dateTime" && /*#__PURE__*/_react.default.createElement(_dateTimeInput.default, {
+    ref: ref,
+    value: currentValue,
+    onChange: v => setCurrentValue(v),
+    css: css
+  }), type === "dropdown" && /*#__PURE__*/_react.default.createElement(_dropdownInput.default, _extends({
+    currentValue: currentValue,
+    ref: ref,
+    handleBlur: handleBlur,
+    handleKeyUp: handleKeyUp,
+    handleChange: handleChange,
+    type: type
+  }, rest)), (type === "text" || type === "number") && /*#__PURE__*/_react.default.createElement(_normalInput.default, _extends({
+    currentValue: currentValue,
+    ref: ref,
+    handleBlur: handleBlur,
+    handleKeyUp: handleKeyUp,
+    handleChange: handleChange,
+    type: type
+  }, rest)), postfix && /*#__PURE__*/_react.default.createElement(Postfix, {
     value: currentValue
   }, postfix), copyable && currentValue && /*#__PURE__*/_react.default.createElement(StyledCopy, {
     onClick: () => navigator.clipboard.writeText(currentValue)
   }), deletable && currentValue && /*#__PURE__*/_react.default.createElement(StyledX, {
     onClick: () => setCurrentValue("")
-  })), type === "password" && !passwordToggle && currentValue && /*#__PURE__*/_react.default.createElement(_reactFeather.Eye, {
-    color: labelColor,
-    cursor: "pointer",
-    style: {
-      marginLeft: "auto"
-    },
-    onClick: handlePasswordToggle
-  }), type === "password" && passwordToggle && currentValue && /*#__PURE__*/_react.default.createElement(_reactFeather.EyeOff, {
-    color: labelColor,
-    cursor: "pointer",
-    style: {
-      marginLeft: "auto"
-    },
-    onClick: handlePasswordToggle
-  })), error && /*#__PURE__*/_react.default.createElement(Error, {
+  }))), error && /*#__PURE__*/_react.default.createElement(Error, {
     className: "input-error"
   }, error));
 };
@@ -134,7 +171,7 @@ const Input = _ref => {
 var _default = Input;
 exports.default = _default;
 
-const Container = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display:flex;\n  flex-direction:column;\n  background-color: ", ";\n  backdrop-filter: brightness(1.15);\n  border-radius: 4px;\n  padding:8px 10px;.2\n  cursor:text;\n  width: 100%;\n  &:focus-within > .input-label{\n    font-size:0.8rem;\n  }\n  &:focus-within > .input{\n    padding-top:4px;\n  }\n"])), p => p.backgroundColor ? p.backgroundColor : "");
+const Container = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display:flex;\n  flex-direction:column;\n  justify-content:flex-start;\n  background-color: ", ";\n  backdrop-filter: brightness(1.15);\n  border-radius: 4px;\n  padding:8px 10px;\n  cursor:text;\n  width: 100%;\n  &:focus-within > .input-label{\n    font-size:0.8rem;\n  }\n  &:focus-within > .input{\n    padding-top:4px;\n  }\n  max-width: 250px;\n  ", "\n"])), p => p.backgroundColor ? p.backgroundColor : "", p => p.css ? p.css : "");
 
 const InlineContainer = _styledComponents.default.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n"])));
 
@@ -142,9 +179,11 @@ const Label = _styledComponents.default.div(_templateObject3 || (_templateObject
 
 const StyledInput = _styledComponents.default.input(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  width: 100%;\n  border:none;\n  background:transparent;\n  flex:1 1;\n  padding:0;\n  font-size:1rem;\n  outline:none;\n"])));
 
+exports.StyledInput = StyledInput;
+
 const Error = _styledComponents.default.div(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  padding-top:4px;\n  color:red;\n  font-size:0.6rem;\n"])));
 
-const Inline = _styledComponents.default.div(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  display:flex;\n  justify-content:space-between\n  align-items:center;\n  padding-top:", ";\n  max-height:", ";\n  border-bottom:1px solid ", ";\n  &:focus-within{\n    max-height:unset;\n  }\n  &:focus-within > div{\n    opacity:1;\n  }\n"])), p => p.value || p.error ? "4px" : "", p => p.value ? "unset" : 0, p => p.error ? "red" : "transparent");
+const Inline = _styledComponents.default.div(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  display:flex;\n  width: 100%;\n  justify-content:space-between;\n  align-items: center;\n  padding-top:", ";\n  max-height:", ";\n  border-bottom:1px solid ", ";\n  &:focus-within{\n    max-height:unset;\n  }\n  & > div{\n    opacity: ", ";\n  }\n  &:focus-within > div{\n    opacity:1;\n  }\n"])), p => p.value || p.error ? "4px" : "", p => p.value || p.show ? "unset" : 0, p => p.error ? "red" : "transparent", p => p.show || p.value ? 1 : 0);
 
 const Prefix = _styledComponents.default.div(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n  font-size:1rem;\n  opacity:", ";\n"])), p => p.value ? "1" : "0");
 

@@ -13,9 +13,11 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _templateObject, _templateObject2;
 
-const _excluded = ["text", "onClick", "style", "disabled", "keyPress", "icon"];
+const _excluded = ["text", "onClick", "disabled", "keyPress", "icon", "css"];
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35,10 +37,10 @@ const Button = _ref => {
   let {
     text,
     onClick,
-    style,
     disabled,
     keyPress,
-    icon
+    icon,
+    css
   } = _ref,
       rest = _objectWithoutProperties(_ref, _excluded);
 
@@ -90,8 +92,8 @@ const Button = _ref => {
     ref: ref
   }, rest, {
     disabled: disabled,
-    style: style,
-    onClick: onClick
+    onClick: onClick,
+    css: css
   }), isRippling ? /*#__PURE__*/_react.default.createElement("span", {
     className: "ripple",
     style: {
@@ -103,9 +105,17 @@ const Button = _ref => {
   }), text);
 };
 
+Button.propTypes = {
+  text: _propTypes.default.string,
+  onClick: _propTypes.default.func,
+  css: _propTypes.default.string,
+  icon: _propTypes.default.string,
+  disabled: _propTypes.default.bool,
+  keyPress: _propTypes.default.string
+};
 var _default = Button;
 exports.default = _default;
 
-const Container = _styledComponents.default.button(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: relative;\n  color:white;\n  background-color:", ";\n  padding: 10px 20px;\n  margin:10px;\n  font-size:1rem;\n  font-weight: 400;\n  border-radius:40px;\n  cursor:pointer;\n  box-shadow:none;\n  border:none;\n  white-space:nowrap;\n  transition: all 0.3s ease-in-out;\n  overflow: hidden;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap:5px;\n  &:hover{\n    transform: scale(1.1);\n  }\n  > span {\n  width: 20px;\n  height: 20px;\n  position: absolute;\n  background: white;\n  display: block;\n  content: \"\";\n  border-radius: 9999px;\n  opacity: 1;\n  animation: 0.9s ease 1 forwards ripple-effect;\n}\n\n@keyframes ripple-effect {\n  0% {\n    transform: scale(1);\n    opacity: 1;\n  }\n  50% {\n    transform: scale(5);\n    opacity: 0.375;\n  }\n  100% {\n    transform: scale(17);\n    opacity: 0;\n  }\n}\n"])), p => p.disabled ? "gray" : "black");
+const Container = _styledComponents.default.button(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: relative;\n  color:white;\n  background-color:", ";\n  padding: 10px 20px;\n  margin:10px;\n  font-size:1rem;\n  font-weight: 400;\n  border-radius:40px;\n  cursor:pointer;\n  box-shadow:none;\n  border:none;\n  white-space:nowrap;\n  transition: all 0.3s ease-in-out;\n  overflow: hidden;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap:5px;\n  &:hover{\n    transform: scale(1.1);\n  }\n  > span {\n  width: 20px;\n  height: 20px;\n  position: absolute;\n  background: white;\n  display: block;\n  content: \"\";\n  border-radius: 9999px;\n  opacity: 1;\n  animation: 0.9s ease 1 forwards ripple-effect;\n  }\n\n  @keyframes ripple-effect {\n  0% {\n    transform: scale(1);\n    opacity: 1;\n    }\n  50% {\n    transform: scale(5);\n    opacity: 0.375;\n    }\n  100% {\n    transform: scale(17);\n    opacity: 0;\n    }\n  }\n  ", "\n"])), p => p.disabled ? "gray" : "black", p => p.css ? p.css : "");
 
 const ButtonIcon = _styledComponents.default.img(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  width: 20px;\n  aspect-ratio: 1 / 1;\n"])));

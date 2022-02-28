@@ -36,11 +36,11 @@ function App() {
       <br/>
       <Input placeholder="Testing" label="testing" type='text' />
       <br/>
-      <Input type='time'/>
+      <Input label="Time" type='time'/>
       <br/>
-      <Input type='date'/>
+      <Input label="Date" type='date'/>
       <br/>
-      <Input type='dateTime'/>
+      <Input label= "DateTime" type='dateTime'/>
       <br/>
     </Container>
   )

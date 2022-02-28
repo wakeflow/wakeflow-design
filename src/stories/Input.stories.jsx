@@ -15,6 +15,7 @@ SimpleInput.args = {
   backgroundColor: `rgba(28, 28, 28, 0.9)`,
   labelColor: `white`,
   css: `> div > div > input {color: white;}`,
+  type: `text`,
 }
 export const PasswordInput = Template.bind({})
 PasswordInput.args = { 
@@ -27,7 +28,7 @@ PasswordInput.args = {
 }
 export const DateInput = Template.bind({})
 DateInput.args = {
-  css: `width: fit-content; > div { padding: 5px; > div > input {color: black;}}`,
+  css: `width: fit-content; > div { > div > input {color: black;}}`,
   label: `Date`,
   backgroundColor: `rgba(243, 186, 29, 0.9)`,
   labelColor: `black`,
@@ -35,12 +36,19 @@ DateInput.args = {
 }
 export const TimeInput = Template.bind({})
 TimeInput.args = {
+  css: `width: fit-content; > div { color: white; > div > input {color: black;}}`,
+  backgroundColor: `rgba(5, 104, 1, 0.9)`,
   type: `time`,
   label: `Time`,
 }
 
 export const DateTimeInput = Template.bind({})
-DateTimeInput.args = { type: `dateTime` }
+DateTimeInput.args = {
+  css: `width: fit-content; > div { color: white; > div > input {color: blue;}}`,
+  backgroundColor: `rgba(0, 0, 0, 0.9)`,
+  label: `DateTime`,
+  type: `dateTime`, 
+}
 
 export const InputDropdown = Template.bind({})
 InputDropdown.args = {
@@ -65,4 +73,5 @@ InputDropdown.args = {
   backgroundColor: `rgba(29, 243, 29, 0.9)`,
   css: `> div > div > input {color: black;}`,
   labelColor: `black`,
+  type: `dropdown`,
 }
