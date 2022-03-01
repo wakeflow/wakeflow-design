@@ -24,6 +24,7 @@ const DateInput = React.forwardRef((props,ref) => {
 export default DateInput
 
 const Container = styled.div`
+  cursor: pointer;
   & > .ant-picker{
     background-color: rgba(255,255,255,0.7);
     color: black;

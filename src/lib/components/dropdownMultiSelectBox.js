@@ -7,11 +7,18 @@ import styled from 'styled-components'
 const animatedComponents = makeAnimated()
  
 const DropdownMultiSelectbox = React.forwardRef((props,ref) => {
-  const { handleChange,handleBlur,currentValue,options,css } = props
+  const { handleChange,handleBlur,currentValue,options } = props
   
   return (
-    <Container ref={ref} css={css} className='topLevel'>
-      <Select options={options} components={animatedComponents} onChange={handleChange} onBlur={handleBlur} isMulti />
+    <Container ref={ref} className='topLevel'>
+      <Select 
+        options={options} 
+        components={animatedComponents} 
+        onChange={handleChange} 
+        onBlur={handleBlur} 
+        isMulti
+        menuPortalTarget={document.body} 
+        styles={{ menuPortal: base => ({ ...base,zIndex: 9999 }) }} />
     </Container>
   )
 })
@@ -22,11 +29,12 @@ const Container = styled.div`
   width: 100%;
   & > div {
     & > div {
-    border-color: black;
-    box-shadow: 0 0 0 1px black;
+    cursor: pointer;
+    border-color: transparent;
+    box-shadow: 0 0 0 1px transparent;
     &:hover{
-      border-color: white;
-      box-shadow: 0 0 0 1px white;
+      border-color: black;
+      box-shadow: 0 0 0 1px black;
       }
     }
   }

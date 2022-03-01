@@ -1,7 +1,7 @@
 import React,{ useState,useEffect,useRef } from 'react'
 import styled from 'styled-components'
 import { validate } from './utils/validate'
-import { X,Copy,Eye,EyeOff } from 'react-feather'
+import { X,Copy } from 'react-feather'
 import PropTypes from 'prop-types'
 import DateInput from './dateInput'
 import TimeInput from './timeInput'
@@ -41,10 +41,13 @@ const Input = ({
   if(schema && visited && currentValue) error = validate(currentValue,schema).join(`, `)
   error = (required && visited && !currentValue) ? `This value is required` : error
 
-  const handleChange = e => { 
-    let { value } = e.target
+  const handleChange = e => {
+    let value 
+    if(e.target) value = e.target
+    else value = e
     if(type === `number`) value = Number(value)
     setCurrentValue(value)
+    console.log(value)
     if(onChange)onChange(value)
   }
 
@@ -77,9 +80,9 @@ const Input = ({
           {type === `time` && <TimeInput ref={ref} value={currentValue} label={label} onChange={v => setCurrentValue(v)} css={css} inputFormat={inputFormat} size={size}/>}
           {type === `date` && <DateInput ref={ref} value={currentValue} label={label} onChange={v => setCurrentValue(v)} css={css} inputFormat={inputFormat} size={size}/>}
           {type === `dateTime` && <DateTimeInput ref={ref} value={currentValue} onChange={v => setCurrentValue(v)} css={css}/>}
-          {type === `dropdown` && <DropdownInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} type={type} {...rest}/>}
-          {type === `dropdownMultiSelectBox` && <DropdownMultiSelectbox currentValue={currentValue} ref={ref} handleBlur={v => {setCurrentValue(v)}} handleChange={v => {setCurrentValue(v)}}{...rest}/>}
-          {type === `dropdownMultiCheckbox` && <DropdownMultiCheckbox currentValue={currentValue} ref={ref} handleBlur={v => {setCurrentValue(v)}} handleChange={v => {setCurrentValue(v)}}{...rest}/>}
+          {type === `dropdown` && <DropdownInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest}/>}
+          {type === `dropdownMultiSelectBox` && <DropdownMultiSelectbox currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest}/>}
+          {type === `dropdownMultiCheckbox` && <DropdownMultiCheckbox currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest}/>}
           {(type === `text` || type === `number`) && <NormalInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}
           {postfix && <Postfix value={currentValue}>{postfix}</Postfix>}
           {copyable && currentValue && <StyledCopy onClick={() => navigator.clipboard.writeText(currentValue)}/>}
@@ -111,7 +114,7 @@ const Container = styled.div`
   backdrop-filter: brightness(1.15);
   border-radius: 4px;
   padding:8px 10px;
-  cursor:text;
+  cursor: text;
   width: 100%;
   &:focus-within > .input-label{
     font-size:0.8rem;
@@ -126,6 +129,7 @@ const Container = styled.div`
 const InlineContainer = styled.div`
   display: flex;
   flex-direction: row;
+  cursor: text;
 `
 const Label = styled.div`
   color: ${p => p.color || (p.error ? `red` : `black`)};
@@ -151,6 +155,7 @@ const Inline = styled.div`
   width: 100%;
   justify-content:space-between;
   align-items: center;
+  cursor: text;
   padding-top:${p => (p.value || p.error) ? `4px` : ``};
   max-height:${p => p.value || p.show ? `unset` : 0};
   border-bottom:1px solid ${p => p.error ? `red` : `transparent`};

@@ -7,11 +7,11 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _styledComponents = _interopRequireDefault(require("styled-components"));
-
 var _reactSelect = _interopRequireDefault(require("react-select"));
 
 var _animated = _interopRequireDefault(require("react-select/animated"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 var _templateObject;
 
@@ -27,24 +27,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 const animatedComponents = (0, _animated.default)();
 
-const DropdownInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
+const DropdownMultiSelectbox = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
   const {
     handleChange,
     handleBlur,
-    options,
-    currentValue
+    currentValue,
+    options
   } = props;
   return /*#__PURE__*/_react.default.createElement(Container, {
     ref: ref,
     className: "topLevel"
   }, /*#__PURE__*/_react.default.createElement(_reactSelect.default, {
-    defaultValue: currentValue || options[0],
     options: options,
-    components: {
-      animatedComponents
-    },
+    components: animatedComponents,
     onChange: handleChange,
     onBlur: handleBlur,
+    isMulti: true,
     menuPortalTarget: document.body,
     styles: {
       menuPortal: base => _objectSpread(_objectSpread({}, base), {}, {
@@ -54,7 +52,7 @@ const DropdownInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
   }));
 });
 
-var _default = DropdownInput;
+var _default = DropdownMultiSelectbox;
 exports.default = _default;
 
-const Container = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  width: 100%;\n  cursor: text;\n  & > div {\n    cursor: text;\n    & > div {\n    cursor: pointer;\n    border-color: transparent;\n    box-shadow: 0 0 0 1px transparent;\n    &:hover{\n      border-color: black;\n      box-shadow: 0 0 0 1px black;\n      }\n    }\n  }\n"])));
+const Container = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  width: 100%;\n  & > div {\n    & > div {\n    cursor: pointer;\n    border-color: transparent;\n    box-shadow: 0 0 0 1px transparent;\n    &:hover{\n      border-color: black;\n      box-shadow: 0 0 0 1px black;\n      }\n    }\n  }\n  ", "\n"])), p => p.css ? p.css : "");

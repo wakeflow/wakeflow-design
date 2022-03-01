@@ -21,6 +21,7 @@ const DateTimeInput = React.forwardRef((props,ref) => {
 export default DateTimeInput
 
 const Container = styled.div`
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

@@ -42,6 +42,8 @@ function App() {
       <br/>
       <Input label= "DateTime" type='dateTime'/>
       <br/> */}
+      <Input label="Single Select" type='dropdown' options={objList}/>
+      <br/>
       <Input label="MultiSelect" type='dropdownMultiSelectBox' options={objList}/>
       <br/>
       <Input label="MultiSelect" type='dropdownMultiCheckbox' options={objList}/>
