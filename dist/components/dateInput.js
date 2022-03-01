@@ -40,14 +40,7 @@ const DateInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
   }));
 });
 
-DateInput.propTypes = {
-  css: _propTypes.default.string,
-  value: _propTypes.default.string,
-  inputFormat: _propTypes.default.string,
-  size: _propTypes.default.string,
-  onChange: _propTypes.default.func
-};
 var _default = DateInput;
 exports.default = _default;
 
-const Container = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  & > .ant-picker{\n    background-color: rgba(255,255,255,0.7);\n    color: black;\n    border-radius:6px;\n    border-width:2px;\n    border-right-width:2px !important;\n  }\n  & > .ant-picker:hover{\n    border-color: black;\n    border-right-width:2px !important;\n  }\n  & > .ant-picker-focused{\n    border-color: black;\n    box-shadow:none;\n    border-right-width:2px !important;\n  }\n  & > .ant-picker-input{\n    border-color: black;\n  }\n  & > a.ant-picker-now-btn{\n    color: black;\n  }\n  & > li.ant-picker-now{\n    color: black;\n  }\n  ", "\n"])), p => p.css ? p.css : "");
+const Container = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  cursor: pointer;\n  & > .ant-picker{\n    background-color: rgba(255,255,255,0.7);\n    color: black;\n    border-radius:6px;\n    border-width:2px;\n    border-right-width:2px !important;\n  }\n  & > .ant-picker:hover{\n    border-color: black;\n    border-right-width:2px !important;\n  }\n  & > .ant-picker-focused{\n    border-color: black;\n    box-shadow:none;\n    border-right-width:2px !important;\n  }\n  & > .ant-picker-input{\n    border-color: black;\n  }\n  & > a.ant-picker-now-btn{\n    color: black;\n  }\n  & > li.ant-picker-now{\n    color: black;\n  }\n  ", "\n"])), p => p.css ? p.css : "");

@@ -21,10 +21,10 @@ const Option = props => {
 }
 const DropdownMultiCheckbox = React.forwardRef((props,ref) => {
 
-  const { handleChange,handleBlur,currentValue,options,css } = props
+  const { handleChange,handleBlur,currentValue,options } = props
   
   return (
-    <Container ref={ref} css={css} className='topLevel'>
+    <Container ref={ref} className='topLevel'>
       <Select 
         options={options} 
         components={{ animatedComponents,Option }} 
@@ -33,7 +33,9 @@ const DropdownMultiCheckbox = React.forwardRef((props,ref) => {
         allowSelectAll={true}
         closeMenuOnSelect={false}
         hideSelectedOptions={false}
-        isMulti />
+        isMulti
+        menuPortalTarget={document.body} 
+        styles={{ menuPortal: base => ({ ...base,zIndex: 9999 }) }} />
     </Container>
   )
 })
@@ -45,11 +47,12 @@ const Container = styled.div`
   width: 100%;
   & > div {
     & > div {
-    border-color: black;
-    box-shadow: 0 0 0 1px black;
+    cursor: pointer;
+    border-color: transparent;
+    box-shadow: 0 0 0 1px transparent;
     &:hover{
-      border-color: white;
-      box-shadow: 0 0 0 1px white;
+      border-color: black;
+      box-shadow: 0 0 0 1px black;
       }
     }
   }

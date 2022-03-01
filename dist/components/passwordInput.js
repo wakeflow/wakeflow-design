@@ -29,7 +29,7 @@ const PasswordInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
     handleKeyUp,
     currentValue,
     type,
-    labelColor
+    highlightColor
   } = props;
   const [passwordToggle, setPasswordToggle] = (0, _react.useState)(false);
 
@@ -51,14 +51,14 @@ const PasswordInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
     onBlur: handleBlur,
     onKeyUp: handleKeyUp
   }), type === "password" && !passwordToggle && currentValue && /*#__PURE__*/_react.default.createElement(_reactFeather.Eye, {
-    color: labelColor,
+    color: highlightColor,
     cursor: "pointer",
     style: {
       marginLeft: "auto"
     },
     onClick: handlePasswordToggle
   }), type === "password" && passwordToggle && currentValue && /*#__PURE__*/_react.default.createElement(_reactFeather.EyeOff, {
-    color: labelColor,
+    color: highlightColor,
     cursor: "pointer",
     style: {
       marginLeft: "auto"

@@ -45,10 +45,10 @@ DateTimeInput.args = {
   type: `dateTime`, 
 }
 
-export const InputDropdown = Template.bind({})
-InputDropdown.args = {
+export const Dropdown = Template.bind({})
+Dropdown.args = {
   label: `Languages`,
-  list: [
+  options: [
     {
       value: `Java123`,
       label: `Java`,
@@ -68,8 +68,8 @@ InputDropdown.args = {
   type: `dropdown`,
 }
 
-export const MultiInputDropdown = Template.bind({})
-MultiInputDropdown.args = {
+export const MultiSelectBoxDropdown = Template.bind({})
+MultiSelectBoxDropdown.args = {
   label: `Languages`,
   options: [
     {
@@ -89,4 +89,26 @@ MultiInputDropdown.args = {
     },
   ],
   type: `dropdownMultiSelectBox`,
+}
+export const MultiSelectCheckboxDropdown = Template.bind({})
+MultiSelectCheckboxDropdown.args = {
+  label: `Languages`,
+  options: [
+    {
+      value: `Java123`,
+      label: `Java`,
+    },
+    {
+      value: `Javascript5`,
+      label: `Javascript`,
+    },{
+      value: `python1`,
+      label: `Python`,
+    },
+    {
+      value: `3214`,
+      label: `Go`,
+    },
+  ],
+  type: `dropdownMultiCheckbox`,
 }

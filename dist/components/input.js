@@ -31,9 +31,13 @@ var _normalInput = _interopRequireDefault(require("./normalInput"));
 
 var _dropdownInput = _interopRequireDefault(require("./dropdownInput"));
 
+var _dropdownMultiSelectBox = _interopRequireDefault(require("./dropdownMultiSelectBox"));
+
+var _dropdownMultiCheckbox = _interopRequireDefault(require("./dropdownMultiCheckbox"));
+
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10;
 
-const _excluded = ["type", "label", "required", "error", "schema", "value", "prefix", "postfix", "onChange", "onBlur", "onError", "onEnter", "copyable", "deletable", "backgroundColor", "css", "size", "labelColor", "inputFormat"];
+const _excluded = ["type", "label", "required", "error", "schema", "value", "prefix", "postfix", "onChange", "onBlur", "onError", "onEnter", "copyable", "deletable", "backgroundColor", "css", "size", "highlightColor", "inputFormat"];
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -68,7 +72,7 @@ const Input = _ref => {
     backgroundColor,
     css,
     size,
-    labelColor,
+    highlightColor,
     inputFormat
   } = _ref,
       rest = _objectWithoutProperties(_ref, _excluded);
@@ -81,11 +85,11 @@ const Input = _ref => {
   error = required && visited && !currentValue ? "This value is required" : error;
 
   const handleChange = e => {
-    let {
-      value
-    } = e.target;
+    let value;
+    if (e.target) value = e.target;else value = e;
     if (type === "number") value = Number(value);
     setCurrentValue(value);
+    console.log(value);
     if (onChange) onChange(value);
   };
 
@@ -108,14 +112,14 @@ const Input = _ref => {
     className: "input-label",
     value: currentValue,
     error: error,
-    color: labelColor
+    color: highlightColor
   }, label, required && "*"), /*#__PURE__*/_react.default.createElement(InlineContainer, null, /*#__PURE__*/_react.default.createElement(Inline, {
     value: currentValue,
     error: error
   }, prefix && /*#__PURE__*/_react.default.createElement(Prefix, {
     value: currentValue
   }, prefix), type === "password" && /*#__PURE__*/_react.default.createElement(_passwordInput.default, _extends({
-    labelColor: labelColor,
+    highlightColor: highlightColor,
     currentValue: currentValue,
     ref: ref,
     handleBlur: handleBlur,
@@ -147,9 +151,17 @@ const Input = _ref => {
     currentValue: currentValue,
     ref: ref,
     handleBlur: handleBlur,
-    handleKeyUp: handleKeyUp,
-    handleChange: handleChange,
-    type: type
+    handleChange: handleChange
+  }, rest)), type === "dropdownMultiSelectBox" && /*#__PURE__*/_react.default.createElement(_dropdownMultiSelectBox.default, _extends({
+    currentValue: currentValue,
+    ref: ref,
+    handleBlur: handleBlur,
+    handleChange: handleChange
+  }, rest)), type === "dropdownMultiCheckbox" && /*#__PURE__*/_react.default.createElement(_dropdownMultiCheckbox.default, _extends({
+    currentValue: currentValue,
+    ref: ref,
+    handleBlur: handleBlur,
+    handleChange: handleChange
   }, rest)), (type === "text" || type === "number") && /*#__PURE__*/_react.default.createElement(_normalInput.default, _extends({
     currentValue: currentValue,
     ref: ref,
@@ -170,12 +182,21 @@ const Input = _ref => {
 
 var _default = Input;
 exports.default = _default;
+Input.propTypes = {
+  css: _propTypes.default.string,
+  value: _propTypes.default.any,
+  type: _propTypes.default.string.isRequired,
+  label: _propTypes.default.string.isRequired,
+  onChange: _propTypes.default.func,
+  onBlur: _propTypes.default.func,
+  required: _propTypes.default.bool
+};
 
-const Container = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display:flex;\n  flex-direction:column;\n  justify-content:flex-start;\n  background-color: ", ";\n  backdrop-filter: brightness(1.15);\n  border-radius: 4px;\n  padding:8px 10px;\n  cursor:text;\n  width: 100%;\n  &:focus-within > .input-label{\n    font-size:0.8rem;\n  }\n  &:focus-within > .input{\n    padding-top:4px;\n  }\n  max-width: 250px;\n  ", "\n"])), p => p.backgroundColor ? p.backgroundColor : "", p => p.css ? p.css : "");
+const Container = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display:flex;\n  flex-direction:column;\n  justify-content:flex-start;\n  background-color: ", ";\n  backdrop-filter: brightness(1.15);\n  border-radius: 4px;\n  padding:8px 10px;\n  cursor: text;\n  width: 100%;\n  &:focus-within > .input-label{\n    font-size:0.8rem;\n  }\n  &:focus-within > .input{\n    padding-top:4px;\n  }\n  max-width: 250px;\n  border: 2px solid black;\n  ", "\n"])), p => p.backgroundColor ? p.backgroundColor : "", p => p.css ? p.css : "");
 
-const InlineContainer = _styledComponents.default.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n"])));
+const InlineContainer = _styledComponents.default.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n  cursor: text;\n"])));
 
-const Label = _styledComponents.default.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  color: ", ";\n  font-size:", ";\n  transition:font-size 0.2s;\n"])), p => p.color || (p.error ? "red" : "rgb(70,70,70)"), p => p.value ? "0.8rem" : "1rem");
+const Label = _styledComponents.default.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  color: ", ";\n  font-size:", ";\n  transition:font-size 0.2s;\n"])), p => p.color || (p.error ? "red" : "black"), p => p.value ? "0.8rem" : "1rem");
 
 const StyledInput = _styledComponents.default.input(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  width: 100%;\n  border:none;\n  background:transparent;\n  flex:1 1;\n  padding:0;\n  font-size:1rem;\n  outline:none;\n"])));
 
@@ -183,7 +204,7 @@ exports.StyledInput = StyledInput;
 
 const Error = _styledComponents.default.div(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  padding-top:4px;\n  color:red;\n  font-size:0.6rem;\n"])));
 
-const Inline = _styledComponents.default.div(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  display:flex;\n  width: 100%;\n  justify-content:space-between;\n  align-items: center;\n  padding-top:", ";\n  max-height:", ";\n  border-bottom:1px solid ", ";\n  &:focus-within{\n    max-height:unset;\n  }\n  & > div{\n    opacity: ", ";\n  }\n  &:focus-within > div{\n    opacity:1;\n  }\n"])), p => p.value || p.error ? "4px" : "", p => p.value || p.show ? "unset" : 0, p => p.error ? "red" : "transparent", p => p.show || p.value ? 1 : 0);
+const Inline = _styledComponents.default.div(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  display:flex;\n  width: 100%;\n  justify-content:space-between;\n  align-items: center;\n  cursor: text;\n  padding-top:", ";\n  max-height:", ";\n  border-bottom:1px solid ", ";\n  &:focus-within{\n    max-height:unset;\n  }\n  & > div{\n    opacity: ", ";\n  }\n  &:focus-within > div{\n    opacity:1;\n  }\n"])), p => p.value || p.error ? "4px" : "", p => p.value || p.show ? "unset" : 0, p => p.error ? "red" : "transparent", p => p.show || p.value ? 1 : 0);
 
 const Prefix = _styledComponents.default.div(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n  font-size:1rem;\n  opacity:", ";\n"])), p => p.value ? "1" : "0");
 
