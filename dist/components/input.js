@@ -130,7 +130,8 @@ const Input = _ref => {
     ref: ref,
     value: currentValue,
     label: label,
-    onChange: v => setCurrentValue(v),
+    handleChange: handleChange,
+    handleBlur: handleBlur,
     css: css,
     inputFormat: inputFormat,
     size: size
@@ -138,14 +139,16 @@ const Input = _ref => {
     ref: ref,
     value: currentValue,
     label: label,
-    onChange: v => setCurrentValue(v),
+    handleChange: handleChange,
+    handleBlur: handleBlur,
     css: css,
     inputFormat: inputFormat,
     size: size
   }), type === "dateTime" && /*#__PURE__*/_react.default.createElement(_dateTimeInput.default, {
     ref: ref,
     value: currentValue,
-    onChange: v => setCurrentValue(v),
+    handleChange: handleChange,
+    handleBlur: handleBlur,
     css: css
   }), type === "dropdown" && /*#__PURE__*/_react.default.createElement(_dropdownInput.default, _extends({
     currentValue: currentValue,

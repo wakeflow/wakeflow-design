@@ -25,7 +25,8 @@ const DateInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
   const {
     value,
     css,
-    onChange,
+    handleChange,
+    handleBlur,
     inputFormat = "MM/DD/YYYY",
     size = "large"
   } = props;
@@ -36,7 +37,8 @@ const DateInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
     value: value,
     format: inputFormat,
     size: size,
-    onChange: onChange
+    onChange: handleChange,
+    onBlur: handleBlur
   }));
 });
 

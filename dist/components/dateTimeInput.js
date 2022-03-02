@@ -24,7 +24,8 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 const DateTimeInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
   const {
     css,
-    onChange,
+    handleChange,
+    handleBlur,
     value
   } = props;
   return /*#__PURE__*/_react.default.createElement(Container, {
@@ -34,7 +35,8 @@ const DateTimeInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
     ref: ref,
     value: value,
     size: "large",
-    onChange: onChange
+    onChange: handleChange,
+    onBlur: handleBlur
   }));
 });
 

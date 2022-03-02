@@ -23,7 +23,8 @@ const TimeInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
   const {
     value,
     css,
-    onChange,
+    handleChange,
+    handleBlur,
     inputFormat = "HH:mm",
     size = "large"
   } = props;
@@ -35,7 +36,8 @@ const TimeInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
     format: inputFormat,
     size: size,
     minuteStep: 1,
-    onChange: onChange
+    onChange: handleChange,
+    onBlur: handleBlur
   }));
 });
 

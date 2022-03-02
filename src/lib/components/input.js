@@ -77,9 +77,9 @@ const Input = ({
         >
           {prefix && <Prefix value={currentValue}>{prefix}</Prefix>}
           {type === `password` && <PasswordInput highlightColor={highlightColor} currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}           
-          {type === `time` && <TimeInput ref={ref} value={currentValue} label={label} onChange={v => setCurrentValue(v)} css={css} inputFormat={inputFormat} size={size}/>}
-          {type === `date` && <DateInput ref={ref} value={currentValue} label={label} onChange={v => setCurrentValue(v)} css={css} inputFormat={inputFormat} size={size}/>}
-          {type === `dateTime` && <DateTimeInput ref={ref} value={currentValue} onChange={v => setCurrentValue(v)} css={css}/>}
+          {type === `time` && <TimeInput ref={ref} value={currentValue} label={label} handleChange={handleChange} handleBlur={handleBlur} css={css} inputFormat={inputFormat} size={size}/>}
+          {type === `date` && <DateInput ref={ref} value={currentValue} label={label} handleChange={handleChange} handleBlur={handleBlur}css={css} inputFormat={inputFormat} size={size}/>}
+          {type === `dateTime` && <DateTimeInput ref={ref} value={currentValue} handleChange={handleChange} handleBlur={handleBlur} css={css}/>}
           {type === `dropdown` && <DropdownInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest}/>}
           {type === `dropdownMultiSelectBox` && <DropdownMultiSelectbox currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest}/>}
           {type === `dropdownMultiCheckbox` && <DropdownMultiCheckbox currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest}/>}

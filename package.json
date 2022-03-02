@@ -1,6 +1,6 @@
 {
   "name": "wakeflow-design",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Wakeflow's component library",
   "main": "dist/index.js",
   "module": "dist/index.js",
