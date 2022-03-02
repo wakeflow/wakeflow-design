@@ -47,7 +47,7 @@ const PasswordInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
     ref: ref,
     placeholder: placeholder,
     value: currentValue,
-    onChange: handleChange,
+    onChange: e => handleChange(e.target.value),
     onBlur: handleBlur,
     onKeyUp: handleKeyUp
   }), type === "password" && !passwordToggle && currentValue && /*#__PURE__*/_react.default.createElement(_reactFeather.Eye, {

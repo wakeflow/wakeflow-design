@@ -24,7 +24,7 @@ const PasswordInput = React.forwardRef((props,ref) => {
         ref={ref}
         placeholder={placeholder}
         value={currentValue}
-        onChange={handleChange}
+        onChange={e => handleChange(e.target.value)}
         onBlur={handleBlur}
         onKeyUp={handleKeyUp}/>
       {type === `password` && !passwordToggle && currentValue && <Eye color={highlightColor} cursor="pointer" style={{ marginLeft: `auto` }} onClick={handlePasswordToggle}/>}

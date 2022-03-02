@@ -24,7 +24,7 @@ const NormalInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
     className: "input",
     ref: ref,
     value: currentValue,
-    onChange: handleChange,
+    onChange: e => handleChange(e.target.value),
     onBlur: handleBlur,
     onKeyUp: handleKeyUp
   });

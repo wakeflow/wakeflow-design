@@ -41,10 +41,7 @@ const Input = ({
   if(schema && visited && currentValue) error = validate(currentValue,schema).join(`, `)
   error = (required && visited && !currentValue) ? `This value is required` : error
 
-  const handleChange = e => {
-    let value 
-    if(e.target) value = e.target
-    else value = e
+  const handleChange = value => {
     if(type === `number`) value = Number(value)
     setCurrentValue(value)
     console.log(value)
@@ -96,15 +93,6 @@ const Input = ({
 
 export default Input
 
-Input.propTypes = { 
-  css: PropTypes.string,
-  value: PropTypes.any,
-  type: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
-  onBlur: PropTypes.func,
-  required: PropTypes.bool,
-}
 
 const Container = styled.div`
   display:flex;

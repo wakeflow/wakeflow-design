@@ -84,9 +84,7 @@ const Input = _ref => {
   if (schema && visited && currentValue) error = (0, _validate.validate)(currentValue, schema).join(", ");
   error = required && visited && !currentValue ? "This value is required" : error;
 
-  const handleChange = e => {
-    let value;
-    if (e.target) value = e.target;else value = e;
+  const handleChange = value => {
     if (type === "number") value = Number(value);
     setCurrentValue(value);
     console.log(value);
@@ -185,15 +183,6 @@ const Input = _ref => {
 
 var _default = Input;
 exports.default = _default;
-Input.propTypes = {
-  css: _propTypes.default.string,
-  value: _propTypes.default.any,
-  type: _propTypes.default.string.isRequired,
-  label: _propTypes.default.string.isRequired,
-  onChange: _propTypes.default.func,
-  onBlur: _propTypes.default.func,
-  required: _propTypes.default.bool
-};
 
 const Container = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display:flex;\n  flex-direction:column;\n  justify-content:flex-start;\n  background-color: ", ";\n  backdrop-filter: brightness(1.15);\n  border-radius: 4px;\n  padding:8px 10px;\n  cursor: text;\n  width: 100%;\n  &:focus-within > .input-label{\n    font-size:0.8rem;\n  }\n  &:focus-within > .input{\n    padding-top:4px;\n  }\n  max-width: 250px;\n  border: 2px solid black;\n  ", "\n"])), p => p.backgroundColor ? p.backgroundColor : "", p => p.css ? p.css : "");
 
