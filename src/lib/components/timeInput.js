@@ -41,7 +41,6 @@ const Container = styled.div`
   & >.ant-picker-input{
     border-color: black; 
   }
-  }
   & > a.ant-picker-now-btn{
     color: black;
   }
