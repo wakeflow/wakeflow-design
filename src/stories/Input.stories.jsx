@@ -18,6 +18,7 @@ export const NumberInput = Template.bind({})
 NumberInput.args = { 
   label: `Number`,
   type: `number`,
+  hideIncrements: true,
 }
 export const PasswordInput = Template.bind({})
 PasswordInput.args = { 

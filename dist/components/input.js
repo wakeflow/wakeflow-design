@@ -85,9 +85,8 @@ const Input = _ref => {
   error = required && visited && !currentValue ? "This value is required" : error;
 
   const handleChange = value => {
-    if (type === "number") value = Number(value);
+    if (type === "number" && value != "") value = Number(value);
     setCurrentValue(value);
-    console.log(value);
     if (onChange) onChange(value);
   };
 
@@ -183,6 +182,17 @@ const Input = _ref => {
 
 var _default = Input;
 exports.default = _default;
+Input.propTypes = {
+  label: _propTypes.default.string.required,
+  type: _propTypes.default.string.required,
+  hideIncrements: _propTypes.default.bool,
+  onChange: _propTypes.default.func,
+  onBlur: _propTypes.default.func,
+  css: _propTypes.default.string,
+  deletable: _propTypes.default.bool,
+  copyable: _propTypes.default.bool,
+  highlightColor: _propTypes.default.string
+};
 
 const Container = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display:flex;\n  flex-direction:column;\n  justify-content:flex-start;\n  background-color: ", ";\n  backdrop-filter: brightness(1.15);\n  border-radius: 4px;\n  padding:8px 10px;\n  cursor: text;\n  width: 100%;\n  &:focus-within > .input-label{\n    font-size:0.8rem;\n  }\n  &:focus-within > .input{\n    padding-top:4px;\n  }\n  max-width: 250px;\n  border: 2px solid black;\n  ", "\n"])), p => p.backgroundColor ? p.backgroundColor : "", p => p.css ? p.css : "");
 
@@ -196,7 +206,7 @@ exports.StyledInput = StyledInput;
 
 const Error = _styledComponents.default.div(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  padding-top:4px;\n  color:red;\n  font-size:0.6rem;\n"])));
 
-const Inline = _styledComponents.default.div(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  display:flex;\n  width: 100%;\n  justify-content:space-between;\n  align-items: center;\n  cursor: text;\n  padding-top:", ";\n  max-height:", ";\n  border-bottom:1px solid ", ";\n  &:focus-within{\n    max-height:unset;\n  }\n  & > div{\n    opacity: ", ";\n  }\n  &:focus-within > div{\n    opacity:1;\n  }\n"])), p => p.value || p.error ? "4px" : "", p => p.value || p.show ? "unset" : 0, p => p.error ? "red" : "transparent", p => p.show || p.value ? 1 : 0);
+const Inline = _styledComponents.default.div(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  display:flex;\n  width: 100%;\n  justify-content:space-between;\n  align-items: center;\n  cursor: text;\n  padding-top:", ";\n  max-height:", ";\n  border-bottom:1px solid ", ";\n  &:focus-within{\n    max-height:unset;\n  }\n  & > div{\n    opacity: ", ";\n  }\n  &:focus-within > div{\n    opacity:1;\n  }\n"])), p => p.value || p.error || p.value === 0 ? "4px" : "", p => p.value || p.show || p.value === 0 ? "unset" : 0, p => p.error ? "red" : "transparent", p => p.show || p.value ? 1 : 0);
 
 const Prefix = _styledComponents.default.div(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n  font-size:1rem;\n  opacity:", ";\n"])), p => p.value ? "1" : "0");
 

@@ -42,9 +42,8 @@ const Input = ({
   error = (required && visited && !currentValue) ? `This value is required` : error
 
   const handleChange = value => {
-    if(type === `number`) value = Number(value)
+    if(type === `number` && value != ``) value = Number(value)
     setCurrentValue(value)
-    console.log(value)
     if(onChange)onChange(value)
   }
 
@@ -93,7 +92,17 @@ const Input = ({
 
 export default Input
 
-
+Input.propTypes = {
+  label: PropTypes.string.required,
+  type: PropTypes.string.required,
+  hideIncrements: PropTypes.bool,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
+  css: PropTypes.string,
+  deletable: PropTypes.bool,
+  copyable: PropTypes.bool,
+  highlightColor: PropTypes.string,
+}
 const Container = styled.div`
   display:flex;
   flex-direction:column;
@@ -144,8 +153,8 @@ const Inline = styled.div`
   justify-content:space-between;
   align-items: center;
   cursor: text;
-  padding-top:${p => (p.value || p.error) ? `4px` : ``};
-  max-height:${p => p.value || p.show ? `unset` : 0};
+  padding-top:${p => (p.value || p.error || p.value === 0) ? `4px` : ``};
+  max-height:${p => p.value || p.show || p.value === 0 ? `unset` : 0};
   border-bottom:1px solid ${p => p.error ? `red` : `transparent`};
   &:focus-within{
     max-height:unset;

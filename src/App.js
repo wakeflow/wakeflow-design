@@ -30,7 +30,7 @@ function App() {
   ]
   return (
     <Container className="App">      
-      <Input label="Number" type="number"/>
+      <Input label="Number" type="number" hideIncrements={true}/>
       <br/>
       <Input label="Password" type="password"/>
       <br/>
