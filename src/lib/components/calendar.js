@@ -14,7 +14,6 @@ const Calendar = React.forwardRef((props,ref) => {
       startDate: e.selection.startDate,
       endDate: e.selection.endDate,
     }
-    console.log(newValue)
     handleChange(newValue)
   }
 
@@ -22,6 +21,7 @@ const Calendar = React.forwardRef((props,ref) => {
     <ReactCalendar
       ranges={[selectionRange]}
       onChange={handleDateChange}
+      onBlur={handleBlur}
     />
   )
 })
