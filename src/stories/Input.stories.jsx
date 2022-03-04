@@ -113,3 +113,8 @@ MultiSelectCheckboxDropdown.args = {
   ],
   type: `dropdownMultiCheckbox`,
 }
+export const Calendar = Template.bind({})
+Calendar.args = {
+  label: `Calendar`,
+  type: `calendar`,
+}
