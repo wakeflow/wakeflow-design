@@ -11,6 +11,7 @@ import NormalInput from './normalInput'
 import DropdownInput from './dropdownInput'
 import DropdownMultiSelectbox from './dropdownMultiSelectBox'
 import DropdownMultiCheckbox from './dropdownMultiCheckbox'
+import Calendar from './calendar'
 
 const Input = ({ 
   type,
@@ -58,7 +59,7 @@ const Input = ({
   }
 
   if(onError) onError(error)
-
+  if(type === `calendar`) return (<Calendar currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest}/>)
   return (
     <Container backgroundColor={backgroundColor} onClick={() => ref.current.focus()} css={css} >
       <Label 
@@ -93,8 +94,8 @@ const Input = ({
 export default Input
 
 Input.propTypes = {
-  label: PropTypes.string.required,
-  type: PropTypes.string.required,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   hideIncrements: PropTypes.bool,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
