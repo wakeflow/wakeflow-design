@@ -30,7 +30,7 @@ function App() {
   ]
   return (
     <Container className="App">      
-      {/* <Input label="Number" type="number" hideIncrements={true}/>
+      <Input label="Number" type="number" hideIncrements={true}/>
       <br/>
       <Input label="Password" type="password"/>
       <br/>
@@ -47,8 +47,8 @@ function App() {
       <Input label="MultiSelect" type='dropdownMultiSelectBox' options={objList}/>
       <br/>
       <Input label="MultiSelect" type='dropdownMultiCheckbox' options={objList}/>
-      <br /> */}
-      <Input label="Calendar" type="calendar"/>
+      <br />
+      <Input label="Calendar" type="calendar" showWeekNumbers={false}/>
     </Container>
   )
 }
