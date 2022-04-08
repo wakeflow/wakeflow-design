@@ -13,6 +13,7 @@ const DropdownMultiSelectbox = React.forwardRef((props,ref) => {
     <Container ref={ref} className='topLevel'>
       <Select 
         options={options} 
+        defaultValue={currentValue}
         components={animatedComponents} 
         onChange={handleChange} 
         onBlur={handleBlur} 
