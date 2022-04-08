@@ -90,6 +90,14 @@ MultiSelectBoxDropdown.args = {
     },
   ],
   type: `dropdownMultiSelectBox`,
+  currentValue: [{
+    value: `Java123`,
+    label: `Java`,
+  },
+  {
+    value: `Javascript5`,
+    label: `Javascript`,
+  }],
 }
 export const MultiSelectCheckboxDropdown = Template.bind({})
 MultiSelectCheckboxDropdown.args = {
@@ -112,6 +120,14 @@ MultiSelectCheckboxDropdown.args = {
     },
   ],
   type: `dropdownMultiCheckbox`,
+  currentValue: [{
+    value: `Java123`,
+    label: `Java`,
+  },
+  {
+    value: `Javascript5`,
+    label: `Javascript`,
+  }],
 }
 export const Calendar = Template.bind({})
 Calendar.args = {
