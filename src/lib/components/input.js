@@ -155,7 +155,7 @@ const Inline = styled.div`
   align-items: center;
   cursor: text;
   padding-top:${p => (p.value || p.error || p.value === 0) ? `4px` : ``};
-  max-height:${p => p.value || p.show || p.value === 0 ? `unset` : 0};
+  max-height:${p => (p.value || p.show || p.value === 0) ? `unset` : 0};
   border-bottom:1px solid ${p => p.error ? `red` : `transparent`};
   &:focus-within{
     max-height:unset;
