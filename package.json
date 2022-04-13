@@ -1,6 +1,6 @@
 {
   "name": "wakeflow-design",
-  "version": "0.2.12",
+  "version": "0.2.11",
   "description": "Wakeflow's component library",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -20,6 +20,7 @@
   },
   "scripts": {
     "dev": "react-scripts start",
+    "start": "react-scripts start",
     "test": "mocha --parallel \"tests/**/*.test.js\" --timeout 5000",
     "lint": "eslint ./",
     "watch": "mocha --watch --parallel \"tests/**/*.test.js\" --timeout 5000",
