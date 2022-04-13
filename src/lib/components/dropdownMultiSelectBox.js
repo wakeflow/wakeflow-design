@@ -2,18 +2,21 @@ import React from 'react'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 import styled from 'styled-components'
+import { useState,useEffect } from 'react'
 
 
 const animatedComponents = makeAnimated()
  
 const DropdownMultiSelectbox = React.forwardRef((props,ref) => {
   const { handleChange,handleBlur,currentValue,options } = props
+  const [value,setValue] = useState(currentValue || ``)
+  useEffect(() => setValue(currentValue),[currentValue])
   
   return (
     <Container ref={ref} className='topLevel'>
       <Select 
         options={options} 
-        defaultValue={currentValue}
+        defaultValue={value}
         components={animatedComponents} 
         onChange={handleChange} 
         onBlur={handleBlur} 
