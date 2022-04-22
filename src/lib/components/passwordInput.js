@@ -10,10 +10,12 @@ const PasswordInput = React.forwardRef((props,ref) => {
   } = props
   const [passwordToggle,setPasswordToggle] = useState(false)
   const handlePasswordToggle = () => {
-    const inputBox = document.querySelector(`#passwordInput`)
-    const type = inputBox.getAttribute(`type`) === `password` ? `text` : `password`
-    inputBox.setAttribute(`type`,type)
-    setPasswordToggle(!passwordToggle)
+    const inputBox = ref.current
+    if (inputBox) {
+      const type = inputBox.getAttribute(`type`) === `password` ? `text` : `password`
+      inputBox.setAttribute(`type`,type)
+      setPasswordToggle(!passwordToggle)
+    }
   }
   return (
     <>
@@ -27,8 +29,8 @@ const PasswordInput = React.forwardRef((props,ref) => {
         onChange={e => handleChange(e.target.value)}
         onBlur={handleBlur}
         onKeyUp={handleKeyUp}/>
-      {type === `password` && !passwordToggle && currentValue && <Eye color={highlightColor} cursor="pointer" style={{ marginLeft: `auto` }} onClick={handlePasswordToggle}/>}
-      {type === `password` && passwordToggle && currentValue && <EyeOff color={highlightColor} cursor="pointer" style={{ marginLeft: `auto` }} onClick={handlePasswordToggle} />}
+      {type === `password` && !passwordToggle && currentValue && <Eye color={highlightColor} cursor="pointer" style={{ marginLeft: `auto`,userSelect: `none` }} onClick={handlePasswordToggle}/>}
+      {type === `password` && passwordToggle && currentValue && <EyeOff color={highlightColor} cursor="pointer" style={{ marginLeft: `auto`,userSelect: `none` }} onClick={handlePasswordToggle} />}
     </>
   )
 })
