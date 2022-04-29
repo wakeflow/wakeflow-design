@@ -6,10 +6,6 @@ const animatedComponents = makeAnimated()
 
 const DropdownInput = React.forwardRef((props,ref) => {
   let { handleChange,handleBlur,options,currentValue } = props
-  if(!currentValue) {
-    currentValue = options[0] // eslint-disable-line
-    handleChange(currentValue)
-  }
   return (
     <Container ref={ref} className='topLevel'>
       <Select
