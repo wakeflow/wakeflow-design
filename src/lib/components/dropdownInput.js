@@ -9,7 +9,7 @@ const DropdownInput = React.forwardRef((props,ref) => {
   return (
     <Container ref={ref} className='topLevel'>
       <Select
-        defaultValue={currentValue}
+        value={currentValue}
         options={options} 
         components={{ animatedComponents }} 
         onChange={handleChange} 

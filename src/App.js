@@ -1,17 +1,7 @@
-import { useState } from "react"
-import { GitHub,Linkedin } from "react-feather"
-import styled from "styled-components"
-import {
-  Badge,Button,DownloadButton,Loader,Map,ContactCard,Input, 
-} from "./lib/index.js"
-import { toast } from './lib/components/toaster'
+import { Input } from "./lib/index.js"
+import React,{ useEffect,useState } from 'react'
 function App() {
-  const css = `
-    color: red;
-    background-color: blue;
-  `
-  const list = [`Java`,`Javascript`,`Python`,`C++`,`Go`]
-  const objList = [
+  const options = [
     {
       value: `Java123`,
       label: `Java`,
@@ -28,6 +18,17 @@ function App() {
       label: `Go`,
     },
   ]
+
+  const [state,setState] = useState(options[0])
+
+  useEffect(() => {
+    const main = async() => {
+      const delay = ms => new Promise(res => setTimeout(res,ms))
+      await delay(1000)
+      setState(options[1])
+    }
+    main()
+  },[])
   return (
     <Container className="App">      
       <Input label="Number" type="number" hideIncrements={true}/>
@@ -42,25 +43,16 @@ function App() {
       <br/>
       <Input label= "DateTime" type='dateTime'/>
       <br/>
-      <Input label="Single Select" type='dropdown' options={objList}/>
+      <Input label="Single Select" type='dropdown' options={options} value={state}/>
       <br/>
-      <Input label="MultiSelect" type='dropdownMultiSelectBox' options={objList}/>
+      <Input label="MultiSelect" type='dropdownMultiSelectBox' options={options}/>
       <br/>
-      <Input label="MultiSelect" type='dropdownMultiCheckbox' options={objList}/>
+      <Input label="MultiSelect" type='dropdownMultiCheckbox' options={options}/>
       <br />
-      <Input label="Calendar" type="calendar" showWeekNumbers={false}/>
+      {/* <Input label="Calendar" type="calendar" showWeekNumbers={false}/> */}
     </Container>
   )
 }
 
 export default App
 
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  padding: 20px;
-  box-sizing:border-box;
-  background: url(/pinkFlowers.jpg) no-repeat center;
-  background-size: cover;
-  gap: 10px;
-`
