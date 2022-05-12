@@ -6,6 +6,7 @@ const NumberInput = React.forwardRef((props,ref) => {
   const { handleChange,handleBlur,handleKeyUp,currentValue,type,hideIncrements } = props
   const onChange = change => {
     if(change === ``) change = null
+    else change = Number(change)
     handleChange(change)
   }
   return (

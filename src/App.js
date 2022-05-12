@@ -24,7 +24,7 @@ function App() {
   return (
     <Container className="App">      
       <Input required value={0} label="Number" type="number" hideIncrements={true}/>
-      <br/>
+      {/* <br/>
       <Input label="Password" type="password"/>
       <br/>
       <Input required label="Normal" type="text"/>
@@ -41,7 +41,7 @@ function App() {
       <br/>
       <Input label="MultiSelect" type='dropdownMultiCheckbox' options={options}/>
       <br />
-      {/* <Input label="Calendar" type="calendar" showWeekNumbers={false}/> */}
+      <Input label="Calendar" type="calendar" showWeekNumbers={false}/> */}
     </Container>
   )
 }
