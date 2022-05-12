@@ -40,7 +40,7 @@ const Input = ({
   const [visited,setVisited] = useState(false)
   useEffect(() => setCurrentValue(value || ``),[value])
   if(schema && visited && currentValue) error = validate(currentValue,schema).join(`, `)
-  error = (required && visited && !currentValue) ? `This value is required` : error
+  error = (required && visited && typeof currentValue === `undefined`) ? `This value is required` : error
 
   const handleChange = value => {
     if(type === `number` && value != ``) value = Number(value)
