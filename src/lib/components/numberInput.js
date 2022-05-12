@@ -1,17 +1,20 @@
 
 import React from 'react'
 import styled from 'styled-components'
-// import { StyledInput } from './input'
 
-const NormalInput = React.forwardRef((props,ref) => {
+const NumberInput = React.forwardRef((props,ref) => {
   const { handleChange,handleBlur,handleKeyUp,currentValue,type,hideIncrements } = props
+  const onChange = change => {
+    if(change === ``) change = null
+    handleChange(change)
+  }
   return (
     <StyledInput
       type={type}
       className='input'
       ref={ref}
-      value={currentValue}
-      onChange={e => handleChange(e.target.value)}
+      value={currentValue ?? ``}
+      onChange={e => onChange(e.target.value) }
       onBlur={handleBlur}
       onKeyUp={handleKeyUp}
       hideIncrements={hideIncrements}
@@ -19,7 +22,7 @@ const NormalInput = React.forwardRef((props,ref) => {
   )
 })
 
-export default NormalInput
+export default NumberInput
 
 const StyledInput = styled.input`
   width: 100%;

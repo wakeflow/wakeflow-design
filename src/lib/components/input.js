@@ -7,7 +7,8 @@ import DateInput from './dateInput'
 import TimeInput from './timeInput'
 import DateTimeInput from './dateTimeInput'
 import PasswordInput from './passwordInput'
-import NormalInput from './normalInput'
+import NumberInput from './numberInput'
+import StringInput from './stringInput'
 import DropdownInput from './dropdownInput'
 import DropdownMultiSelectbox from './dropdownMultiSelectBox'
 import DropdownMultiCheckbox from './dropdownMultiCheckbox'
@@ -40,16 +41,14 @@ const Input = ({
   const [visited,setVisited] = useState(false)
   useEffect(() => setCurrentValue(value),[value])
   if(schema && visited && currentValue) error = validate(currentValue,schema).join(`, `)
-  error = (required && visited && typeof currentValue === `undefined`) ? `This value is required` : error
+  error = (required && visited && (typeof currentValue === `undefined` || currentValue === null)) ? `This value is required` : error
 
   const handleChange = value => {
-    if(type === `number` && value != ``) value = Number(value)
     setCurrentValue(value)
     if(onChange)onChange(value)
   }
 
   const handleBlur = () => { 
-    const value = type === `number` ? Number(currentValue) : currentValue
     if(onBlur) onBlur(value)
     setVisited(true)
   }
@@ -80,7 +79,8 @@ const Input = ({
           {type === `dropdown` && <DropdownInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest}/>}
           {type === `dropdownMultiSelectBox` && <DropdownMultiSelectbox currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest}/>}
           {type === `dropdownMultiCheckbox` && <DropdownMultiCheckbox currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest}/>}
-          {(type === `text` || type === `number`) && <NormalInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}
+          {type === `number` && <NumberInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}
+          {type === `text` && <StringInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} type={type} {...rest}/>}
           {postfix && <Postfix value={currentValue}>{postfix}</Postfix>}
           {copyable && currentValue && <StyledCopy onClick={() => navigator.clipboard.writeText(currentValue)}/>}
           {deletable && currentValue && <StyledX onClick={() => setCurrentValue(``)}/>}
