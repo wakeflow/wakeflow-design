@@ -36,9 +36,9 @@ const Input = ({
   ...rest
 }) => {
   const ref = useRef()
-  const [currentValue,setCurrentValue] = useState(value || ``)
+  const [currentValue,setCurrentValue] = useState(value)
   const [visited,setVisited] = useState(false)
-  useEffect(() => setCurrentValue(value || ``),[value])
+  useEffect(() => setCurrentValue(value),[value])
   if(schema && visited && currentValue) error = validate(currentValue,schema).join(`, `)
   error = (required && visited && typeof currentValue === `undefined`) ? `This value is required` : error
 

@@ -23,7 +23,7 @@ function App() {
 
   return (
     <Container className="App">      
-      <Input required label="Number" type="number" hideIncrements={true}/>
+      <Input required value={0} label="Number" type="number" hideIncrements={true}/>
       <br/>
       <Input label="Password" type="password"/>
       <br/>
