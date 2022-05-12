@@ -35,6 +35,8 @@ var _dropdownMultiSelectBox = _interopRequireDefault(require("./dropdownMultiSel
 
 var _dropdownMultiCheckbox = _interopRequireDefault(require("./dropdownMultiCheckbox"));
 
+var _calendar = _interopRequireDefault(require("./calendar"));
+
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10;
 
 const _excluded = ["type", "label", "required", "error", "schema", "value", "prefix", "postfix", "onChange", "onBlur", "onError", "onEnter", "copyable", "deletable", "backgroundColor", "css", "size", "highlightColor", "inputFormat"];
@@ -82,7 +84,7 @@ const Input = _ref => {
   const [visited, setVisited] = (0, _react.useState)(false);
   (0, _react.useEffect)(() => setCurrentValue(value || ""), [value]);
   if (schema && visited && currentValue) error = (0, _validate.validate)(currentValue, schema).join(", ");
-  error = required && visited && !currentValue ? "This value is required" : error;
+  error = required && visited && typeof currentValue === "undefined" ? "This value is required" : error;
 
   const handleChange = value => {
     if (type === "number" && value != "") value = Number(value);
@@ -101,6 +103,12 @@ const Input = _ref => {
   };
 
   if (onError) onError(error);
+  if (type === "calendar") return /*#__PURE__*/_react.default.createElement(_calendar.default, _extends({
+    currentValue: currentValue,
+    ref: ref,
+    handleBlur: handleBlur,
+    handleChange: handleChange
+  }, rest));
   return /*#__PURE__*/_react.default.createElement(Container, {
     backgroundColor: backgroundColor,
     onClick: () => ref.current.focus(),
@@ -183,8 +191,8 @@ const Input = _ref => {
 var _default = Input;
 exports.default = _default;
 Input.propTypes = {
-  label: _propTypes.default.string.required,
-  type: _propTypes.default.string.required,
+  label: _propTypes.default.string.isRequired,
+  type: _propTypes.default.string.isRequired,
   hideIncrements: _propTypes.default.bool,
   onChange: _propTypes.default.func,
   onBlur: _propTypes.default.func,

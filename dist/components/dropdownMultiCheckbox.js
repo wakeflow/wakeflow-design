@@ -53,6 +53,7 @@ const DropdownMultiCheckbox = /*#__PURE__*/_react.default.forwardRef((props, ref
     className: "topLevel"
   }, /*#__PURE__*/_react.default.createElement(_reactSelect.default, {
     options: options,
+    defaultValue: currentValue,
     components: {
       animatedComponents,
       Option

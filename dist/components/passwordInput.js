@@ -34,10 +34,13 @@ const PasswordInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
   const [passwordToggle, setPasswordToggle] = (0, _react.useState)(false);
 
   const handlePasswordToggle = () => {
-    const inputBox = document.querySelector("#passwordInput");
-    const type = inputBox.getAttribute("type") === "password" ? "text" : "password";
-    inputBox.setAttribute("type", type);
-    setPasswordToggle(!passwordToggle);
+    const inputBox = ref.current;
+
+    if (inputBox) {
+      const type = inputBox.getAttribute("type") === "password" ? "text" : "password";
+      inputBox.setAttribute("type", type);
+      setPasswordToggle(!passwordToggle);
+    }
   };
 
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_input.StyledInput, {
@@ -54,14 +57,16 @@ const PasswordInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
     color: highlightColor,
     cursor: "pointer",
     style: {
-      marginLeft: "auto"
+      marginLeft: "auto",
+      userSelect: "none"
     },
     onClick: handlePasswordToggle
   }), type === "password" && passwordToggle && currentValue && /*#__PURE__*/_react.default.createElement(_reactFeather.EyeOff, {
     color: highlightColor,
     cursor: "pointer",
     style: {
-      marginLeft: "auto"
+      marginLeft: "auto",
+      userSelect: "none"
     },
     onClick: handlePasswordToggle
   }));

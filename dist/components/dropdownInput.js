@@ -28,7 +28,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 const animatedComponents = (0, _animated.default)();
 
 const DropdownInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
-  const {
+  let {
     handleChange,
     handleBlur,
     options,
@@ -38,7 +38,7 @@ const DropdownInput = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
     ref: ref,
     className: "topLevel"
   }, /*#__PURE__*/_react.default.createElement(_reactSelect.default, {
-    defaultValue: currentValue || options[0],
+    value: currentValue,
     options: options,
     components: {
       animatedComponents

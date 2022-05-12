@@ -27,7 +27,7 @@ function App() {
       <br/>
       <Input label="Password" type="password"/>
       <br/>
-      <Input label="Normal" type="text"/>
+      <Input required label="Normal" type="text"/>
       <br/>
       <Input label="Time" type='time'/>
       <br/>
