@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import 'antd/dist/antd.css'
+import 'antd/dist/antd.min.css'
 import { TimePicker } from 'antd'
 
 const TimeInput = React.forwardRef((props,ref) => {

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
 import { Eye,EyeOff } from 'react-feather'
-import styled from 'styled-components'
 import { StyledInput } from './input'
 
 const PasswordInput = React.forwardRef((props,ref) => {
@@ -25,7 +24,7 @@ const PasswordInput = React.forwardRef((props,ref) => {
         className='input'
         ref={ref}
         placeholder={placeholder}
-        value={currentValue}
+        value={currentValue ?? ``}
         onChange={e => handleChange(e.target.value)}
         onBlur={handleBlur}
         onKeyUp={handleKeyUp}/>

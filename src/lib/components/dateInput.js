@@ -1,5 +1,5 @@
 import React from 'react'
-import 'antd/dist/antd.css'
+import 'antd/dist/antd.min.css'
 import { DatePicker } from 'antd'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
