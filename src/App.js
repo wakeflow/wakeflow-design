@@ -24,7 +24,7 @@ function App() {
   return (
     <Container className="App">      
       <Input required value={0} label="Number" type="number" hideIncrements={true}/>
-      {/* <br/>
+      <br/>
       <Input label="Password" type="password"/>
       <br/>
       <Input required label="Normal" type="text"/>
@@ -40,7 +40,7 @@ function App() {
       <Input label="MultiSelect" type='dropdownMultiSelectBox' options={options}/>
       <br/>
       <Input label="MultiSelect" type='dropdownMultiCheckbox' options={options}/>
-      <br />
+      {/* <br />
       <Input label="Calendar" type="calendar" showWeekNumbers={false}/> */}
     </Container>
   )
@@ -48,4 +48,6 @@ function App() {
 
 export default App
 
-const Container = styled.div``
+const Container = styled.div`
+  margin: 4em
+`
