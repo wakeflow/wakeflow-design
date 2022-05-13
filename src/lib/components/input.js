@@ -52,7 +52,7 @@ const Input = ({
   if (onError) onError(error)
   if (type === `calendar`)
     return (
-      <Calendar currentValue={currentValue} ref={ref} handleBlur={onBlur} handleChange={onChange} {...rest}/>
+      <Calendar currentValue={currentValue} ref={ref} onBlur={onBlur} onChange={onChange} {...rest}/>
     )
   return (
     <Container backgroundColor={backgroundColor} onClick={() => ref.current.focus()} css={css}>
