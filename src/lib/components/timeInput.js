@@ -4,7 +4,7 @@ import 'antd/dist/antd.min.css'
 import { TimePicker } from 'antd'
 
 const TimeInput = React.forwardRef((props,ref) => {
-  const { value,css,handleChange,handleBlur,inputFormat = `HH:mm`,size = `large` } = props
+  const { value,css,onChange,onBlur,inputFormat = `HH:mm`,size = `large` } = props
   return (
     <Container css={css}>
       <TimePicker
@@ -13,8 +13,8 @@ const TimeInput = React.forwardRef((props,ref) => {
         format={inputFormat}
         size={size}
         minuteStep={1}
-        onChange={handleChange}
-        onBlur={handleBlur}
+        onChange={onChange}
+        onBlur={onBlur}
       />
     </Container>
   )

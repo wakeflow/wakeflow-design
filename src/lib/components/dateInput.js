@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const DateInput = React.forwardRef((props,ref) => {
-  const { value,css,handleChange,handleBlur,inputFormat = `MM/DD/YYYY`,size = `large` } = props
+  const { value,css,onChange,onBlur,inputFormat = `MM/DD/YYYY`,size = `large` } = props
 
   return (
     <Container css={css}>
@@ -14,8 +14,8 @@ const DateInput = React.forwardRef((props,ref) => {
         value={value}
         format={inputFormat}
         size={size}
-        onChange={handleChange}
-        onBlur={handleBlur}/>
+        onChange={onChange}
+        onBlur={onBlur}/>
     </Container>
   )
 })

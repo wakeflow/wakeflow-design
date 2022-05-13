@@ -21,7 +21,7 @@ const Option = props => {
 }
 const DropdownMultiCheckbox = React.forwardRef((props,ref) => {
 
-  const { handleChange,handleBlur,currentValue,options } = props
+  const { onChange,onBlur,currentValue,options } = props
   
   return (
     <Container ref={ref} className='topLevel'>
@@ -29,8 +29,8 @@ const DropdownMultiCheckbox = React.forwardRef((props,ref) => {
         options={options} 
         defaultValue={currentValue}
         components={{ animatedComponents,Option }} 
-        onChange={handleChange} 
-        onBlur={handleBlur}
+        onChange={onChange} 
+        onBlur={onBlur}
         allowSelectAll={true}
         closeMenuOnSelect={false}
         hideSelectedOptions={false}

@@ -8,7 +8,7 @@ import { useState,useEffect } from 'react'
 const animatedComponents = makeAnimated()
  
 const DropdownMultiSelectbox = React.forwardRef((props,ref) => {
-  const { handleChange,handleBlur,currentValue,options } = props
+  const { onChange,onBlur,currentValue,options } = props
   const [value,setValue] = useState(currentValue || ``)
   useEffect(() => setValue(currentValue),[currentValue])
   
@@ -18,8 +18,8 @@ const DropdownMultiSelectbox = React.forwardRef((props,ref) => {
         options={options} 
         defaultValue={value}
         components={animatedComponents} 
-        onChange={handleChange} 
-        onBlur={handleBlur} 
+        onChange={onChange} 
+        onBlur={onBlur} 
         isMulti
         menuPortalTarget={document.body} 
         styles={{ menuPortal: base => ({ ...base,zIndex: 9999 }) }} />
