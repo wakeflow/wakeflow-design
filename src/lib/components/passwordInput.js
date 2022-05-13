@@ -5,7 +5,7 @@ import { StyledInput } from './input'
 
 const PasswordInput = React.forwardRef((props,ref) => {
   const {
-    placeholder,handleChange,handleBlur,handleKeyUp,currentValue,type,highlightColor,css,
+    placeholder,onChange,onBlur,onKeyUp,currentValue,type,highlightColor,css,
   } = props
   const [passwordToggle,setPasswordToggle] = useState(false)
   const handlePasswordToggle = () => {
@@ -26,9 +26,9 @@ const PasswordInput = React.forwardRef((props,ref) => {
         ref={ref}
         placeholder={placeholder}
         value={currentValue ?? ``}
-        onChange={e => handleChange(e.target.value)}
-        onBlur={handleBlur}
-        onKeyUp={handleKeyUp}/>
+        onChange={e => onChange(e.target.value)}
+        onBlur={onBlur}
+        onKeyUp={onKeyUp}/>
       {type === `password` && !passwordToggle && currentValue && <Eye color={highlightColor} cursor="pointer" style={{ marginLeft: `auto`,userSelect: `none` }} onClick={handlePasswordToggle}/>}
       {type === `password` && passwordToggle && currentValue && <EyeOff color={highlightColor} cursor="pointer" style={{ marginLeft: `auto`,userSelect: `none` }} onClick={handlePasswordToggle} />}
     </>

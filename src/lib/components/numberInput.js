@@ -3,12 +3,11 @@ import React from 'react'
 import styled from 'styled-components'
 
 const NumberInput = React.forwardRef((props,ref) => {
-  console.log({ props })
-  const { handleChange,handleBlur,handleKeyUp,currentValue,type,hideIncrements } = props
-  const onChange = change => {
+  const { onChange,onBlur,onKeyUp,currentValue,type,hideIncrements } = props
+  const handleChange = change => {
     if(change === ``) change = null
     else change = Number(change)
-    handleChange(change)
+    onChange(change)
     console.log(change)
   }
   return (
@@ -17,9 +16,9 @@ const NumberInput = React.forwardRef((props,ref) => {
       className='input'
       ref={ref}
       value={currentValue ?? ``}
-      onChange={e => onChange(e.target.value)}
-      onBlur={handleBlur}
-      onKeyUp={handleKeyUp}
+      onChange={e => handleChange(e.target.value)}
+      onBlur={onBlur}
+      onKeyUp={onKeyUp}
       hideIncrements={hideIncrements}
     />
   )

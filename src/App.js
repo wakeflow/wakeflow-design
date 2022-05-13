@@ -40,8 +40,8 @@ function App() {
       <Input label="MultiSelect" type='dropdownMultiSelectBox' options={options}/>
       <br/>
       <Input label="MultiSelect" type='dropdownMultiCheckbox' options={options}/>
-      {/* <br />
-      <Input label="Calendar" type="calendar" showWeekNumbers={false}/> */}
+      <br />
+      <Input label="Calendar" type="calendar" showWeekNumbers={false}/>
     </Container>
   )
 }

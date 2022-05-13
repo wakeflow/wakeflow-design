@@ -21,7 +21,7 @@ const Input = ({
 }) => {
   const ref = useRef()
   let {
-    type,label,required,error,schema,value,onChange,onBlur,onError,onEnter,copyable,deletable,backgroundColor,css,highlightColor, 
+    type,label,required,error,schema,value,onChange: _onChange,onBlur: _onBlur,onError,onEnter,copyable,deletable,backgroundColor,css,highlightColor, 
   } = rest
   const [currentValue,setCurrentValue] = useState(value)
   const [visited,setVisited] = useState(false)
@@ -35,24 +35,24 @@ const Input = ({
       ? `This value is required`
       : error
 
-  const handleChange = value => {
+  const onChange = value => {
     setCurrentValue(value)
-    if (onChange) onChange(value)
+    if (_onChange) _onChange(value)
   }
 
-  const handleBlur = () => {
-    if (onBlur) onBlur(value)
+  const onBlur = () => {
+    if (_onBlur) _onBlur(value)
     setVisited(true)
   }
 
-  const handleKeyUp = e => {
+  const onKeyUp = e => {
     if (e.key === `Enter` && onEnter) onEnter()
   }
 
   if (onError) onError(error)
   if (type === `calendar`)
     return (
-      <Calendar currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest}/>
+      <Calendar currentValue={currentValue} ref={ref} onBlur={onBlur} onChange={onChange} {...rest}/>
     )
   return (
     <Container backgroundColor={backgroundColor} onClick={() => ref.current.focus()} css={css}>
@@ -63,15 +63,15 @@ const Input = ({
         <Inline value={currentValue} error={error}>   
           {prefix && <Prefix value={currentValue}>{prefix}</Prefix>}   
 
-          {type === `password` && (<PasswordInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} {...rest} />)}   
-          {type === `time` && (<TimeInput ref={ref} value={currentValue} handleChange={handleChange} handleBlur={handleBlur} {...rest} />)}   
-          {type === `date` && (<DateInput ref={ref} value={currentValue} handleChange={handleChange} handleBlur={handleBlur} {...rest} />)}   
-          {type === `dateTime` && (<DateTimeInput ref={ref} value={currentValue} handleChange={handleChange} handleBlur={handleBlur} {...rest} />)}   
-          {type === `dropdown` && (<DropdownInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest} />)}   
-          {type === `dropdownMultiSelectBox` && (<DropdownMultiSelectbox currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest} />)}   
-          {type === `dropdownMultiCheckbox` && (<DropdownMultiCheckbox currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleChange={handleChange} {...rest} />)}   
-          {type === `number` && (<NumberInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} {...rest} />)}   
-          {type === `text` && (<StringInput currentValue={currentValue} ref={ref} handleBlur={handleBlur} handleKeyUp={handleKeyUp} handleChange={handleChange} {...rest} />)}  
+          {type === `password` && (<PasswordInput currentValue={currentValue} ref={ref} onBlur={onBlur} onKeyUp={onKeyUp} onChange={onChange} {...rest} />)}   
+          {type === `time` && (<TimeInput ref={ref} value={currentValue} onChange={onChange} onBlur={onBlur} {...rest} />)}   
+          {type === `date` && (<DateInput ref={ref} value={currentValue} onChange={onChange} onBlur={onBlur} {...rest} />)}   
+          {type === `dateTime` && (<DateTimeInput ref={ref} value={currentValue} onChange={onChange} onBlur={onBlur} {...rest} />)}   
+          {type === `dropdown` && (<DropdownInput currentValue={currentValue} ref={ref} onBlur={onBlur} onChange={onChange} {...rest} />)}   
+          {type === `dropdownMultiSelectBox` && (<DropdownMultiSelectbox currentValue={currentValue} ref={ref} onBlur={onBlur} onChange={onChange} {...rest} />)}   
+          {type === `dropdownMultiCheckbox` && (<DropdownMultiCheckbox currentValue={currentValue} ref={ref} onBlur={onBlur} onChange={onChange} {...rest} />)}   
+          {type === `number` && (<NumberInput currentValue={currentValue} ref={ref} onBlur={onBlur} onKeyUp={onKeyUp} onChange={onChange} {...rest} />)}   
+          {type === `text` && (<StringInput currentValue={currentValue} ref={ref} onBlur={onBlur} onKeyUp={onKeyUp} onChange={onChange} {...rest} />)}  
 
           {postfix && <Postfix value={currentValue}>{postfix}</Postfix>}   
           {copyable && currentValue && (<StyledCopy onClick={() => navigator.clipboard.writeText(currentValue)} />)}   
@@ -89,8 +89,8 @@ Input.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   hideIncrements: PropTypes.bool,
-  onChange: PropTypes.func,
-  onBlur: PropTypes.func,
+  _onChange: PropTypes.func,
+  _onBlur: PropTypes.func,
   css: PropTypes.string,
   deletable: PropTypes.bool,
   copyable: PropTypes.bool,

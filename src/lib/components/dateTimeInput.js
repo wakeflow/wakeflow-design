@@ -5,7 +5,7 @@ import DateInput from './dateInput'
 import TimeInput from './timeInput'
 
 const DateTimeInput = React.forwardRef((props,ref) => {
-  const { css,handleChange,handleBlur,value } = props
+  const { css,onChange,onBlur,value } = props
   return (
     <Container css={css}>
       <DatePicker
@@ -13,8 +13,8 @@ const DateTimeInput = React.forwardRef((props,ref) => {
         ref={ref}
         value={value}
         size='large'
-        onChange={handleChange}
-        onBlur={handleBlur}/>  
+        onChange={onChange}
+        onBlur={onBlur}/>  
     </Container>
   )
 })
