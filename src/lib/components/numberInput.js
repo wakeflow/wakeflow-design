@@ -45,5 +45,7 @@ const StyledInput = styled.input`
   &[type=number] {
   -moz-appearance: ${p => p.hideIncrements ? `textfield` : ``};
   }
+
+  ${p => p.css}
 `
 

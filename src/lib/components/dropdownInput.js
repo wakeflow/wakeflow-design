@@ -38,4 +38,6 @@ const Container = styled.div`
       }
     }
   }
+
+  ${p => p.css}
 `
