@@ -47,5 +47,5 @@ const Container = styled.div`
   & > li.ant-picker-now{
     color: black;
   }
-  ${p => p.css ? p.css : ``}
+  ${p => p.css}
 `

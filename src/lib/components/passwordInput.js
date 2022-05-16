@@ -16,6 +16,9 @@ const PasswordInput = React.forwardRef((props,ref) => {
       setPasswordToggle(!passwordToggle)
     }
   }
+
+  const EyeIcon = passwordToggle ? Eye : EyeOff
+
   return (
     <>
       <StyledInput
@@ -29,8 +32,12 @@ const PasswordInput = React.forwardRef((props,ref) => {
         onChange={e => onChange(e.target.value)}
         onBlur={onBlur}
         onKeyUp={onKeyUp}/>
-      {type === `password` && !passwordToggle && currentValue && <Eye color={highlightColor} cursor="pointer" style={{ marginLeft: `auto`,userSelect: `none` }} onClick={handlePasswordToggle}/>}
-      {type === `password` && passwordToggle && currentValue && <EyeOff color={highlightColor} cursor="pointer" style={{ marginLeft: `auto`,userSelect: `none` }} onClick={handlePasswordToggle} />}
+      {type === `password` && currentValue && 
+      <EyeIcon 
+        color={highlightColor} 
+        cursor="pointer" 
+        style={{ marginLeft: `auto`,userSelect: `none` }} 
+        onClick={handlePasswordToggle}/>}
     </>
   )
 })

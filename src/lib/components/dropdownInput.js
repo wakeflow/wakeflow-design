@@ -5,9 +5,9 @@ import makeAnimated from 'react-select/animated'
 const animatedComponents = makeAnimated()
 
 const DropdownInput = React.forwardRef((props,ref) => {
-  let { onChange,onBlur,options,currentValue } = props
+  let { onChange,onBlur,options,currentValue,css } = props
   return (
-    <Container ref={ref} className='topLevel'>
+    <Container ref={ref} className='topLevel' css={css}>
       <Select
         value={currentValue}
         options={options} 
@@ -38,6 +38,5 @@ const Container = styled.div`
       }
     }
   }
-
   ${p => p.css}
 `

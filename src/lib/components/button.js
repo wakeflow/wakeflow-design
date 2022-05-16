@@ -124,7 +124,7 @@ const Container = styled.button`
     opacity: 0;
     }
   }
-  ${p => p.css ? p.css : ``}
+  ${p => p.css}
 `
 const ButtonIcon = styled.img`
   width: 20px;

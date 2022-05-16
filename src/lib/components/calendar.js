@@ -3,8 +3,7 @@ import { DateRangePicker as ReactCalendar } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 
-const Calendar = React.forwardRef((props,ref) => {
-  console.log({ props })
+const Calendar = props => {
   const { onChange,onBlur,currentValue } = props
   const selectionRange = {
     startDate: currentValue?.startDate || new Date(),
@@ -12,12 +11,10 @@ const Calendar = React.forwardRef((props,ref) => {
     key: `selection`,
   }
   const handleDateChange = e => {
-    const newValue = {
+    onChange({
       startDate: e.selection.startDate,
       endDate: e.selection.endDate,
-    }
-    console.log(newValue)
-    onChange(newValue)
+    })
   }
 
   return (
@@ -27,6 +24,6 @@ const Calendar = React.forwardRef((props,ref) => {
       onBlur={onBlur}
     />
   )
-})
+}
 
 export default Calendar

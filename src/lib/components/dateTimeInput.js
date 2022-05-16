@@ -1,8 +1,6 @@
 import { DatePicker } from 'antd'
 import React from 'react'
 import styled from 'styled-components'
-import DateInput from './dateInput'
-import TimeInput from './timeInput'
 
 const DateTimeInput = React.forwardRef((props,ref) => {
   const { css,onChange,onBlur,value } = props
@@ -52,5 +50,5 @@ const Container = styled.div`
   & > li.ant-picker-now{
     color: black;
   }
-  ${p => p.css ? p.css : ``}
+  ${p => p.css}
 `

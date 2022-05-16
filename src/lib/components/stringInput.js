@@ -3,15 +3,19 @@ import React from 'react'
 import styled from 'styled-components'
 
 const NumberInput = React.forwardRef((props,ref) => {
-  console.log({ props })
 
-  const { onChange,onBlur,onKeyUp,currentValue,type,hideIncrements } = props
+  const {
+    onChange,onBlur,onKeyUp,currentValue,type,hideIncrements,css, 
+  } = props
+
   const handleChange = change => {
     if(change === ``) change = null
     onChange(change)
   }
+
   return (
     <StyledInput
+      css={css}
       type={type}
       className='input'
       ref={ref}
