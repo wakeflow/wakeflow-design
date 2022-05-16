@@ -3,20 +3,26 @@ import React from 'react'
 import styled from 'styled-components'
 
 const NumberInput = React.forwardRef((props,ref) => {
-  const { handleChange,handleBlur,handleKeyUp,currentValue,type,hideIncrements } = props
-  const onChange = change => {
+
+  const {
+    onChange,onBlur,onKeyUp,currentValue,type,hideIncrements,css, 
+  } = props
+
+  const handleChange = change => {
     if(change === ``) change = null
-    handleChange(change)
+    onChange(change)
   }
+
   return (
     <StyledInput
+      css={css}
       type={type}
       className='input'
       ref={ref}
       value={currentValue ?? ``}
-      onChange={e => onChange(e.target.value) }
-      onBlur={handleBlur}
-      onKeyUp={handleKeyUp}
+      onChange={e => handleChange(e.target.value) }
+      onBlur={onBlur}
+      onKeyUp={onKeyUp}
       hideIncrements={hideIncrements}
     />
   )
@@ -42,5 +48,7 @@ const StyledInput = styled.input`
   &[type=number] {
   -moz-appearance: ${p => p.hideIncrements ? `textfield` : ``};
   }
+  
+  ${p => p.css}
 `
 

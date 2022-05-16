@@ -5,7 +5,7 @@ import { StyledInput } from './input'
 
 const PasswordInput = React.forwardRef((props,ref) => {
   const {
-    placeholder,handleChange,handleBlur,handleKeyUp,currentValue,type,highlightColor, 
+    placeholder,onChange,onBlur,onKeyUp,currentValue,type,highlightColor,css,
   } = props
   const [passwordToggle,setPasswordToggle] = useState(false)
   const handlePasswordToggle = () => {
@@ -16,20 +16,28 @@ const PasswordInput = React.forwardRef((props,ref) => {
       setPasswordToggle(!passwordToggle)
     }
   }
+
+  const EyeIcon = passwordToggle ? Eye : EyeOff
+
   return (
     <>
       <StyledInput
         id='passwordInput'
         type={type}
         className='input'
+        css={css}
         ref={ref}
         placeholder={placeholder}
         value={currentValue ?? ``}
-        onChange={e => handleChange(e.target.value)}
-        onBlur={handleBlur}
-        onKeyUp={handleKeyUp}/>
-      {type === `password` && !passwordToggle && currentValue && <Eye color={highlightColor} cursor="pointer" style={{ marginLeft: `auto`,userSelect: `none` }} onClick={handlePasswordToggle}/>}
-      {type === `password` && passwordToggle && currentValue && <EyeOff color={highlightColor} cursor="pointer" style={{ marginLeft: `auto`,userSelect: `none` }} onClick={handlePasswordToggle} />}
+        onChange={e => onChange(e.target.value)}
+        onBlur={onBlur}
+        onKeyUp={onKeyUp}/>
+      {type === `password` && currentValue && 
+      <EyeIcon 
+        color={highlightColor} 
+        cursor="pointer" 
+        style={{ marginLeft: `auto`,userSelect: `none` }} 
+        onClick={handlePasswordToggle}/>}
     </>
   )
 })

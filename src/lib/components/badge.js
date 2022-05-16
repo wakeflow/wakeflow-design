@@ -24,7 +24,7 @@ const Container = styled.div`
   vertical-align:center;
   align-items:center;
   justify-content:center;
-  ${p => p.css ? p.css : ``}
+  ${p => p.css}
 `
 const Text = styled.div`
 `

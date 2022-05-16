@@ -68,7 +68,7 @@ const Container = styled.div`
     transform: scale(1.01);
   }
   margin: 20px;
-  ${p => p.css ? p.css : ``}
+  ${p => p.css}
 `
 const FirstRow = styled.div`
   display: flex;

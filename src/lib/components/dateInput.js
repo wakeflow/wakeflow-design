@@ -2,10 +2,9 @@ import React from 'react'
 import 'antd/dist/antd.min.css'
 import { DatePicker } from 'antd'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
 const DateInput = React.forwardRef((props,ref) => {
-  const { value,css,handleChange,handleBlur,inputFormat = `MM/DD/YYYY`,size = `large` } = props
+  const { value,css,onChange,onBlur,inputFormat = `MM/DD/YYYY`,size = `large` } = props
 
   return (
     <Container css={css}>
@@ -14,8 +13,8 @@ const DateInput = React.forwardRef((props,ref) => {
         value={value}
         format={inputFormat}
         size={size}
-        onChange={handleChange}
-        onBlur={handleBlur}/>
+        onChange={onChange}
+        onBlur={onBlur}/>
     </Container>
   )
 })
@@ -51,5 +50,5 @@ const Container = styled.div`
   & > li.ant-picker-now{
     color: black;
   }
-  ${p => p.css ? p.css : ``}
+  ${p => p.css}
 `

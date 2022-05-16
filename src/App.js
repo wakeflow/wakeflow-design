@@ -1,4 +1,4 @@
-import { Input } from "./lib/index.js"
+import { Button,Input } from "./lib/index.js"
 import React from 'react'
 import styled from 'styled-components'
 
@@ -24,7 +24,7 @@ function App() {
   return (
     <Container className="App">      
       <Input required value={0} label="Number" type="number" hideIncrements={true}/>
-      {/* <br/>
+      <br/>
       <Input label="Password" type="password"/>
       <br/>
       <Input required label="Normal" type="text"/>
@@ -41,11 +41,15 @@ function App() {
       <br/>
       <Input label="MultiSelect" type='dropdownMultiCheckbox' options={options}/>
       <br />
-      <Input label="Calendar" type="calendar" showWeekNumbers={false}/> */}
+      <Input label="Calendar" type="calendar" showWeekNumbers={false}/>
+      <br />
+      <Button text="Test"></Button>
     </Container>
   )
 }
 
 export default App
 
-const Container = styled.div``
+const Container = styled.div`
+  margin: 4em
+`

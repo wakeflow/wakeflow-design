@@ -41,7 +41,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  ${p => p.css ? p.css : ``}
+  ${p => p.css}
 `
 const Img = styled.img`
   max-width: 500px;
