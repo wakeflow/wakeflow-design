@@ -1,4 +1,4 @@
-import React,{ useEffect,useState } from 'react'
+import React,{ useEffect } from 'react'
 import styled from 'styled-components'
 import { useRef } from 'react'
 import PropTypes from 'prop-types'
@@ -7,30 +7,6 @@ const Button = ({
   text,onClick,disabled,keyPress,icon,css,...rest
 }) => {
   const ref = useRef()
-  const [coords,setCoords] = useState({ x: -1,y: -1 })
-  const [isRippling,setIsRippling] = useState(false)
-
-  useEffect(() => {
-    let timer = null
-    if (coords.x !== -1 && coords.y !== -1) {
-      setIsRippling(true)
-      timer = setTimeout(() => setIsRippling(false),300)
-    } else setIsRippling(false)
-    return () => clearTimeout(timer)
-  },[coords])
-
-  useEffect(() => {
-    if (!isRippling) setCoords({ x: -1,y: -1 })
-  },[isRippling])
-
-  const materializeEffect = e => {
-    const rect = e.target.getBoundingClientRect()
-    setCoords({ x: e.clientX - rect.left,y: e.clientY - rect.top })
-    // onClick && onClick(e)
-  }
-  useEffect(() => {
-    if (ref) ref.current.addEventListener(`click`,materializeEffect)
-  },[])
 
   const handleKeyUp = e => {
     if (e.key === keyPress) {
@@ -51,17 +27,6 @@ const Button = ({
       disabled={disabled}
       onClick={onClick}
       css={css}>
-      {isRippling ? (
-        <span
-          className="ripple"
-          style={{
-            left: coords.x,
-            top: coords.y,
-          }}
-        />
-      ) : (
-        ``
-      )}
       {icon && <ButtonIcon src={icon} />}
       {text}
     </Container>
@@ -100,33 +65,9 @@ const Container = styled.button`
   &:hover{
     transform: scale(1.1);
   }
-  > span {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  background: white;
-  display: block;
-  content: "";
-  border-radius: 9999px;
-  opacity: 1;
-  animation: 0.9s ease 1 forwards ripple-effect;
-  }
 
-  @keyframes ripple-effect {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-    }
-  50% {
-    transform: scale(5);
-    opacity: 0.375;
-    }
-  100% {
-    transform: scale(17);
-    opacity: 0;
-    }
-  }
   ${p => p.css}
+
 `
 const ButtonIcon = styled.img`
   width: 20px;
