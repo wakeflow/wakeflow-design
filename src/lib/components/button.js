@@ -56,14 +56,19 @@ const Container = styled.button`
   box-shadow:none;
   border:none;
   white-space:nowrap;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.1s ease-in-out;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap:5px;
+  gap:5px; 
+
   &:hover{
     transform: scale(1.1);
+  }
+  
+  &:active{
+    opacity:0.6
   }
 
   ${p => p.css}
