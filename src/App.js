@@ -1,4 +1,4 @@
-import { Input } from "./lib/index.js"
+import { Button,Input } from "./lib/index.js"
 import React from 'react'
 import styled from 'styled-components'
 
@@ -42,6 +42,8 @@ function App() {
       <Input label="MultiSelect" type='dropdownMultiCheckbox' options={options}/>
       <br />
       <Input label="Calendar" type="calendar" showWeekNumbers={false}/>
+      <br />
+      <Button text="Test"></Button>
     </Container>
   )
 }

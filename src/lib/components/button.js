@@ -11,10 +11,12 @@ const Button = ({
   const [isRippling,setIsRippling] = useState(false)
 
   useEffect(() => {
+    let timer
     if (coords.x !== -1 && coords.y !== -1) {
       setIsRippling(true)
-      setTimeout(() => setIsRippling(false),300)
+      timer = setTimeout(() => setIsRippling(false),300)
     } else setIsRippling(false)
+    return () => clearTimeout(timer)
   },[coords])
 
   useEffect(() => {
